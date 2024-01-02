@@ -1,0 +1,446 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Student";
+    ViewBag.ActiveSideNav = SideNavBar.NavStudent.ToString(); 
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.StudentAttendanceReport.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/student-info.css" asp-append-version="true" />
+}
+
+<!-- start :main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-4 col-lg-2 nav-div">
+        <partial name='_StudentSubMenuPartial '/>
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="icon fs-3 side-menu"
+                  name="add-circle-sharp"
+                  onclick="Submenu(this)"></ion-icon>
+
+        <div class="row information p-3">
+            <h2 class="text-center">Attendence Report</h2>
+            <div class="col-md-8 mx-auto">
+                <input type="text" placeholder="Search" class="form-control" />
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-end mb-5">
+
+                    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+                <div class="collapse overflow-scroll" id="collapseExample">
+                    <table class="table">
+                        <thead>
+                        <th>Name</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>11</th>
+                        <th>12</th>
+                        <th>13</th>
+                        <th>14</th>
+                        <th>15</th>
+                        <th>16</th>
+                        <th>17</th>
+                        <th>18</th>
+                        <th>19</th>
+                        <th>20</th>
+                        <th>21</th>
+                        <th>22</th>
+                        <th>23</th>
+                        <th>24</th>
+                        <th>25</th>
+                        <th>26</th>
+                        <th>27</th>
+                        <th>28</th>
+                        <th>29</th>
+                        <th>30</th>
+                        </thead>
+                        <tr>
+                            <td>jhon</td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>David</td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>jack</td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row py-4">
+
+
+                <div class="card table-card py-4">
+                    <h2>All Student</h2>
+                    <table class="table no-border text-center">
+                        <thead>
+                        <th>Name</th>
+                        <th>Id</th>
+                        <th>Department</th>
+                        <th>Date</th>
+                        <th>Attendence Status</th>
+                        <th>Download</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Panthera Leo</td>
+                                <td>10102</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><a href=""><img src="~/assets/images/dashboard/Group 134.png" alt="" /></a></td>
+                            </tr>
+                            <tr class="">
+                                <td>Homo Sapiens</td>
+                                <td>10102</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><img src="~/assets/images/dashboard/Group 134.png" alt="" /></td>
+                            </tr>
+                            <tr class="">
+                                <td>Rosa Gallica</td>
+                                <td>10102</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><img src="~/assets/images/dashboard/Group 134.png" alt="" /></td>
+                            </tr>
+                            <tr class="">
+                                <td>Harry Brook</td>
+                                <td>10102</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><img src="~/assets/images/dashboard/Group 134.png" alt="" /></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end main-content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,91 @@
+﻿@using LearningManagement.Data.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using LearningManagement.Data.ViewModels
+@model AdminViewModel
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin";
+    ViewBag.ActiveSideNav = SideNavBar.NavIndex.ToString();
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.AdminIndex.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/admin-account.css" asp-append-version="true" />
+}
+
+
+<!-- start: main-content -->
+<div class="row px-lg-4 ">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_AdminSubMenuPartial' />
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-12 col-lg-7">
+        <ion-icon class="icon fs-3 side-menu"
+                  name="add-circle-sharp"
+                  onclick="Submenu(this)"></ion-icon>
+        <form class="form w-100" asp-route-returnUrl="@ViewBag.ReturnUrl" asp-controller="Admin" asp-action="AdminInfo" method="post">
+            <div class="row information p-5">
+                <div class="col-md-12">
+                    <p class="info-border col-md-8">Change Account Information</p>
+
+                    <div class="row mt-4">
+                        <div class="col-lg-6">
+                            <label>First name</label>
+                            <input type="text" placeholder="First Name" required asp-for="FirstName" class="form-control"/>
+                            <span asp-validation-for="FirstName" class="err"></span>
+                        </div>
+                        <div class="col-lg-6 mt-3 mt-lg-0">
+                            <label>Last name</label>
+                            <input type="text" placeholder="Last Name" required asp-for="LastName" class="form-control"/>
+                            <span asp-validation-for="LastName" class="err"></span>
+                        </div>
+                    </div>
+                    <div class="col mt-3">
+                        <label>Email (UserName)</label>
+                        <input type="text" placeholder="Email (UserName)" required asp-for="Email" disabled class="form-control" />
+                    </div>
+                    <div class="col mt-3">
+                        <label>Address</label>
+                        <textarea type="text"
+                                  placeholder="Enter your address here"
+                                  class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="mt-3">Update</button>
+
+                </div>
+                <!-- end section main form -->
+            </div>
+        </form>
+    </div>
+    <div class="col-md-12 col-lg-3 mx-auto">
+        <div class="report mt-4 mt-lg-0">
+            <p class="info-border">Exam Report</p>
+            <div class="list-group mt-4">
+                <a href="">
+                    <div class="list-group-item mt-3">
+                        <i class="fa-regular fa-circle-check img-fluid"></i>
+                        2022-2023 all results
+                    </div>
+                </a>
+                <a href="">
+                    <div class="list-group-item mt-3">
+                        <i class="fa-regular fa-circle-check img-fluid"></i>
+                        Grade A final exam
+                    </div>
+                </a>
+                <a href="">
+                    <div class="list-group-item mt-3">
+                        <i class="fa-regular fa-circle-check img-fluid"></i>
+                        Postgraduate report
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

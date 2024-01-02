@@ -1,0 +1,156 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin Add Class";
+    ViewBag.ActiveSideNav = SideNavBar.NavIndex.ToString();
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.AddClass.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/extendted.css" asp-append-version="true" />
+}
+
+<!-- start :main content -->
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_AdminSubMenuPartial'/>
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="icon fs-3 side-menu" name="add-circle-sharp" onclick="Submenu(this)"></ion-icon>
+        <div x-data="initializeData()" class="row information p-3">
+            <!-- start form  -->
+            <div class="col-1">
+                <button class="btn d-inline  mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="fa-solid fa-plus "></i>
+                </button>
+            </div>
+
+            <div class="collapse" id="collapseExample">
+                <h2 class="text-center">Add New Class</h2>
+                <form x-on:submit.prevent="formSubmit" class="form w-100">
+                    <label class="py-2">Class Name</label>
+                    <input type="text" x-model="formData.className" placeholder="Class Name" required class="form-control" />
+
+                    <button type="submit" class="btn mt-3 mb-5">Add</button>
+                </form>
+            </div>
+
+            <!-- end form -->
+            <!-- start table -->
+            <div class="col-md-12">
+                <div class="card table-card py-3">
+                    <h2 class="head">Class List</h2>
+                    <table class="table no-border text-center">
+                        <thead>
+                        <tr>
+                            <th>Class Name</th>
+                            <th>Change Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <template x-for="item in tableData">
+                            <tr>
+                                <td x-text="item.className"></td>
+                                <td>
+                                    <button class="btn btn-sm">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                    <button class="btn btn-sm"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end table -->
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end : main content -->
+@section Scripts {
+    <script>
+        // alpine js cdn linked in admin layout
+        function initializeData() {
+            return {
+                loading: false,
+                tableData: [],
+                formData: {
+                    className: ''
+                },
+
+                // add
+                async formSubmit() {
+                    const url = '@Url.Action("AddClass","Admin")';
+                    const { className } = this.formData;
+
+
+                    const model = { className };
+
+
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(model)
+                        });
+
+
+                        if (!response.ok) {
+                            const responseData = await response.json();
+                            throw new Error(responseData.message)
+                        }
+
+                        iziToast.success({
+                            title: 'Success',
+                            message: 'Successfully submitted'
+                        });
+
+                        // reset form
+                        this.formData = {};
+                        this.getTableData();
+
+
+                    } catch (error) {
+                        iziToast.error({ title: 'Error', message: error.message });
+                        console.error('An error occurred while sending the request:', error);
+                    }
+                },
+
+                // get years
+                async getTableData() {
+                    const url = '@Url.Action("GetClass","Admin")';
+
+                    this.loading = true;
+
+                    try {
+                        const response = await fetch(url);
+
+
+                        if (!response.ok) {
+                            console.error("error getting data");
+                        }
+
+                        const responseData = await response.json();
+
+                        this.tableData = responseData
+
+                    } catch (error) {
+                        console.error(error);
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+
+
+                init() {
+                    this.getTableData();
+                }
+            }
+        }
+    </script>
+
+}

@@ -1,0 +1,75 @@
+﻿@using LearningManagement.Data.Enums
+@model LearningManagement.Data.ViewModels.TeacherAssignCourseModel
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Teacher";
+    ViewBag.ActiveSideNav = SideNavBar.NavTeacher.ToString(); 
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.TeacherAssign.ToString();
+
+    var teachers = ViewBag.Teachers as SelectList;
+    var classes = ViewBag.Classes as SelectList;
+    var courses = ViewBag.Courses as SelectList;
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/teacher-parent.css" asp-append-version="true" />
+}
+
+<!--start: main content -->
+<div class="row">
+    <div class="col-md-4 col-lg-2 nav-div">
+        <partial name='_TeacherSubMenuPartial' />
+    </div>
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="icon fs-3 side-menu"
+                  name="add-circle-sharp"
+                  onclick="Submenu(this)"></ion-icon>
+
+        <div class="row information p-3">
+            <h2 class="text-center">Assign Teacher</h2>
+            <form class="form w-100" asp-route-returnUrl="@ViewBag.ReturnUrl" asp-controller="Admin" asp-action="TeacherAssign" method="post">
+                <div class="row">
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Teacher</label>
+                        <select asp-for="InstitutionTeacherId" class="form-select" required>
+                            <option value="">Select Teacher *</option>
+                            @foreach (var item in teachers)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Class</label>
+                        <select asp-for="InstitutionClassId" class="form-select" required>
+                            <option value="">Select Class *</option>
+                            @foreach (var item in classes)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Course</label>
+                        <select asp-for="InstitutionCourseId" class="form-select" required>   
+                            <option value="">Select Course *</option>
+                            @foreach (var item in courses)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="mt-3 btn">Assign</button>
+                <span asp-validation-for="InstitutionTeacherId" class="err"></span>
+                
+            </form>
+
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end: main content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

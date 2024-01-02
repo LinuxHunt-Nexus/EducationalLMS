@@ -1,0 +1,106 @@
+﻿@using LearningManagement.Data.ViewModels
+@model SignUpModel
+@{
+    ViewData["Title"] = "SignUp";
+}
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/signup.css" asp-append-version="true" />
+}
+<div class="row main">
+    <div class="col-lg-6">
+        <img src="~/assets/images/accounts/signup.png"
+             alt=""
+             class="img-fluid" />
+    </div>
+    <div class="col-lg-6 p-5">
+        <h2>Sign up</h2>
+        <p>Welcome! Please give your information here.</p>
+
+        <!--==== form ====-->
+
+        <form id="account" class="form w-100" asp-route-returnUrl="@ViewBag.ReturnUrl" asp-controller="Home" asp-action="SignUp" method="post">
+            <div class="row">
+                <div class="inputDiv1 col-lg-6">
+                    <input type="text"
+                           required
+                           placeholder="First Name*"
+                           asp-for="FirstName"
+                           class="form-control mb-3" />
+                    <span asp-validation-for="FirstName" class="err"></span>
+                    <i class="ac-icon fa fa-sharp fa-user last-name"></i>
+                </div>
+                <div class="inputDiv1 col-lg-6">
+                    <input type="text"
+                           required
+                           placeholder="Last Name*"
+                           asp-for="LastName"
+                           class="form-control mb-3" />
+                    <span asp-validation-for="LastName" class="err"></span>
+                    <i class="ac-icon fa fa-sharp fa-user last-name"></i>
+                </div>
+            </div>
+            <div class="inputDiv1 col">
+                <input type="email"
+                       required
+                       placeholder="Email Address*"
+                       asp-for="Email"
+                       class="form-control mb-3" />
+                <span asp-validation-for="Email" class="err"></span>
+                <i class="ac-icon fa fa-sharp fa-envelope"></i>
+            </div>
+            <div class="inputDiv1 col">
+                <input type="text"
+                       required
+                       placeholder="Institution Name*"
+                       asp-for="InstitutionName"
+                       class="form-control mb-3" />
+                <span asp-validation-for="InstitutionName" class="err"></span>
+                <i class="ac-icon fa-solid fa-building-columns"></i>
+            </div>
+            <div class="inputDiv1 col">
+                <input type="password"
+                       required
+                       placeholder="Password*"
+                       asp-for="Password"
+                       class="form-control mb-4" />
+                <span asp-validation-for="Password" class="err"></span>
+                <i class="ac-icon fa fa-sharp fa-eye fa-flip-horizontal"></i>
+            </div>
+            <div class="inputDiv1 col">
+                <input type="password"
+                       required
+                       placeholder="Confirm Password*"
+                       asp-for="ConfirmPassword"
+                       class="form-control mb-3" />
+                <span asp-validation-for="ConfirmPassword" class="err"></span>
+                <i class="ac-icon fa fa-eye fa-flip-horizontal"></i>
+            </div>
+            <input type="checkbox"
+                   required
+                   name=""
+                   class="form-check-input p-0" />
+            <p class="d-inline">I agree with the Terms & Conditions</p>
+
+            <button type="submit" class="btn btn-block w-100 mt-2">Submit</button>
+
+            <div class="d-flex justify-content-center align-items-center mt-2">
+                <p class="hr"></p>
+                <p class="d-inline text-center mx-3">or</p>
+                <p class="hr"></p>
+            </div>
+
+            <a href="#" class="btn primary-bg w-100 btn-block">
+                <img src="~/assets/images/accounts/icon.png"
+                     alt=""
+                     class="img-fluid mx-1"
+                     style="height: 25px; width: 25px" />
+                Login with google
+            </a>
+
+            <p class="text-center text-muted mt-2">
+                Already have account ?
+                <a href="~/Home/index" class="span"> Login here </a>
+            </p>
+        </form>
+    </div>
+</div>

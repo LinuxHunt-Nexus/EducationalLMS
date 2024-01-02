@@ -1,0 +1,236 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Inbox";
+    ViewBag.ActiveSideNav = SideNavBar.NavInbox.ToString(); 
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/inbox.css" asp-append-version="true" />
+}
+
+<!-- start: main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-4 col-lg-2 mt-0 mt-lg-4">
+        <div class="">
+            <button class="btn py-1 fs-6"><i class="fa-solid fa-plus mx-2"></i>Compose Mail</button>
+        </div>
+        <a href="">
+            <div class="row py-2 mt-4">
+                <div class="col-1">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+                <div class="col-3">Inbox</div>
+                <div class="col-1">16</div>
+            </div>
+        </a>
+        <a href="">
+            <div class="row py-2">
+                <div class="col-1">
+                    <i class="fa-regular fa-paper-plane"></i>
+                </div>
+                <div class="col-8">send Mail</div>
+            </div>
+        </a>
+        <a href="">
+            <div class="row py-2">
+                <div class="col-1">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <div class="col-6">Draft</div>
+            </div>
+        </a>
+        <a href="">
+            <div class="row py-2">
+                <div class="col-1">
+                    <i class="fa-regular fa-trash-can"></i>
+                </div>
+                <div class="col-6">Trash</div>
+            </div>
+        </a>
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-10">
+        <div class="row py-4">
+            <div class="col-md-6">
+                <input type="text" name="" placeholder="search" class="form-control" />
+            </div>
+        </div>
+        <div class="row information p-3">
+            <!-- cards -->
+            <div class="col-md-3">
+                <div class="row py-2">
+                    <div class="card p-3">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="~/assets/images/inbox/Rectangle 54.png" alt="">
+                            </div>
+                            <div class="col-6">
+                                <p>Louis Adkins</p>
+                            </div>
+                        </div>
+                        <p class="fw-bold">How can i download my certificate ?</p>
+                        <div class="row">
+                            <div class="col-1">
+                                <input type="checkbox">
+                            </div>
+                            <div class="col-1">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="col-1">
+                                <i class="fa-solid fa-paperclip"></i>
+                            </div>
+                            <div class="col-9 text-xxl-end">
+                                <p class="d-inline">10.40am</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="card p-3">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="~/assets/images/inbox/Rectangle 54 (1).png" alt="">
+                            </div>
+                            <div class="col-6">
+                                <p>Gary Gibson</p>
+                            </div>
+                        </div>
+                        <p class="fw-bold">I want to admit on your school.</p>
+                        <div class="row">
+                            <div class="col-1">
+                                <input type="checkbox">
+                            </div>
+                            <div class="col-1">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="col-1">
+                                <i class="fa-solid fa-paperclip"></i>
+                            </div>
+                            <div class="col-9 text-xxl-end">
+                                <p class="d-inline">10.40am</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="card p-3">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="~/assets/images/inbox/Rectangle 54 (2).png" alt="">
+                            </div>
+                            <div class="col-6">
+                                <p>Andrew Carry</p>
+                            </div>
+                        </div>
+                        <p class="fw-bold">Can u provide me the cost ?</p>
+                        <div class="row">
+                            <div class="col-1">
+                                <input type="checkbox">
+                            </div>
+                            <div class="col-1">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="col-1">
+                                <i class="fa-solid fa-paperclip"></i>
+                            </div>
+                            <div class="col-9 text-xxl-end">
+                                <p class="d-inline">10.40am</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row py-2">
+                    <div class="card p-3">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="~/assets/images/inbox/Rectangle 54 (3).png" alt="">
+                            </div>
+                            <div class="col-6">
+                                <p>Daryl Mitchel</p>
+                            </div>
+                        </div>
+                        <p class="fw-bold">Application for sudden leave.</p>
+                        <div class="row">
+                            <div class="col-1">
+                                <input type="checkbox">
+                            </div>
+                            <div class="col-1">
+                                <i class="fa fa-star" ></i>
+                            </div>
+                            <div class="col-1">
+                                <i class="fa-solid fa-paperclip"></i>
+                            </div>
+                           <div class="col-9 text-xxl-end">
+                            <p class="d-inline">10.40am</p>
+                           </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <p class="text-muted">Jan 16, 2022</p>
+                    <p class="fw-bold">How can i download my certificate ?</p>
+                    <p><span class="fw-bold">From</span>:louisadkins02@email.com</p>
+                    <p>
+                        I hope this email finds you well. I am writing to inquire about the process for downloading my certificate for [course/program/event]. I successfully completed the requirements for the certificat
+                        Could you kindly provide me with instructions or direct me to the appropriate resources that outline the steps to download the certificate? If there are any specific prerequisites or additional information needed, please let me know, and I will be happy to provide it.
+                        I look forward to your prompt response. If there are any updates or developments regarding the certificate downloading process, please do not hesitate to inform me.
+                        Once again, thank you for your time and assistance.
+
+                    </p>
+                    <p>
+                        Kind regards,<br>
+                        Louis Adkins
+                    </p>
+                    <div class="row ">
+                        <div class="col-md-12 d-flex gap-4 align-items-center">
+                            <div>
+                                <p><i class="fa-solid fa-paperclip mt-4"></i>Attachment (10 MB)</p>
+                            </div>
+                            <div>
+                                <button class="btn py-1 fs-6">View All</button>
+                            </div>
+                            <div>
+                                <button class="btn py-1 fs-6">Download All</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-2">
+                            <img src="~/assets/images/inbox/Rectangle 56.png" alt="" class="img-fluid" />
+                        </div>
+                        <div class="col-2">
+                            <img src="~/assets/images/inbox/Rectangle 57.png" alt="" class="img-fluid" />
+                        </div>
+                        <div class="col-2">
+                            <img src="~/assets/images/inbox/Rectangle 58.png" alt="" class="img-fluid" />
+                        </div>
+                        <div class="col-2 attach-div py-3">
+                            <p class="text-center">3+</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3 py-3">
+                        <div class="">
+                            <button class="btn py-1 fs-6"><i class="fa-solid fa-arrow-turn-up fa-rotate-270"></i> Reply</button>
+                        </div>
+                        <div class="">
+                            <button class="btn py-1 fs-6"><i class="fa-solid fa-arrow-turn-down fa-rotate-270"></i> Forward</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- end section main form -->
+        </div>
+
+    </div>
+</div>
+<!-- end main content -->

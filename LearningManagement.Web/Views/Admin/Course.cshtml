@@ -1,0 +1,135 @@
+﻿@using LearningManagement.Data.Enums
+@using LearningManagement.Data.ViewModels
+@model IEnumerable<TeacherCourseViewModel>
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Course";
+    ViewBag.ActiveSideNav = SideNavBar.NavCourse.ToString(); 
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.Course.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/course.css" asp-append-version="true" />
+}
+<!-- start :main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_CourseSubMenuPartial '/>
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-12 col-lg-7">
+        <ion-icon class="fs-3 side-menu icon" name="add-circle-sharp" onclick="Submenu(this)"></ion-icon>
+        <div class="row information p-5">
+            <div class="row">
+                <div class="col-md-4 py-3 py-md-0">
+                    <select class="form-select">
+                        <option value="01">
+                            Select Class
+                        </option>
+                        <option value="01">demo</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select">
+                        <option value="01">
+                            Select Section
+                        </option>
+                        <option value="01">demo</option>
+                    </select>
+                </div>
+            </div>
+            <!-- card -->
+            <div class="row p-2">
+                <div class="col-md-12 d-flex flex-wrap">
+                    
+                @foreach (var item in Model)
+                    {
+                        <div class="course  p-2">
+                            <div class="card">
+                                <div class="card-content p-3">
+                                    <h6 class="d-inline text-light">@item.CourseName</h6>
+                                    <p class="d-inline float-end">
+                                        <i class="fa-solid fa-ellipsis-vertical text-light"></i>
+                                    </p>
+                                    <p class="text-light">@item.FullName</p>
+
+                                    <img src="~/Images/@(string.IsNullOrEmpty(item.ImageFileName) ? "default-image.png" : item.ImageFileName)" alt=""
+                                         class="float-end img-fluid" style="height: 54px; width: 54px;"/>
+
+                                    <p class="py-4">Due Tomorrow <br>11:59 PM - Assignment of Hi..</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                   
+                 @*   <div class="course p-2">
+                        <a href="./class-details.html">
+                            <div class="card1 card">
+                                <div class="card-content p-3">
+                                    <h6 class="d-inline text-light">Psychology</h6>
+                                    <p class="d-inline float-end">
+                                        <i class="fa-solid fa-ellipsis-vertical text-light"></i>
+                                    </p>
+                                    <p class="text-light">Jonathan Allen</p>
+
+                                    <img src="~/assets/images/course/Ellipse 5.png" alt=""
+                                         class="float-end img-fluid" style="height: 54px; width: 54px;"/>
+
+                                    <p class="py-4 ">Due Tomorrow <br>11:59 PM - Assignment of Hi..</p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="course p-2">
+                        <div class="card2 card">
+                            <div class="card-content p-3">
+                                <a href="./class-details.html"><h6 class="d-inline text-light">Psychology</h6></a>
+                                <p class="d-inline float-end">
+                                    <i class="fa-solid fa-ellipsis-vertical text-light"></i>
+                                </p>
+                                <p class="text-light">Jonathan Allen</p>
+
+                                <img src="~/assets/images/course/Ellipse 5.png" alt=""
+                                     class="float-end img-fluid" style="height: 54px; width: 54px;"/>
+
+                                <p class="py-4 ">Due Tomorrow <br>11:59 PM - Assignment of Hi..</p>
+
+                            </div>
+                        </div>
+                    </div>*@
+                    
+                </div>
+            </div>
+            <!-- end section main form -->
+
+
+        </div>
+    </div>
+    <div class="col-md-12 col-xl-3 mx-auto">
+        <div class="report mt-2">
+            <p>To Do</p>
+            <hr>
+            <div class="list-group mt-4">
+                <div class="list-group-item mt-3">
+                    <i class="fa-regular fa-rectangle-list img-fluid"></i>
+                    <a href="">Participate in class discussions</a>
+                </div>
+                <div class="list-group-item mt-3">
+                    <i class="fa-regular fa-rectangle-list img-fluid"></i>
+                    <a href="">Set up a study schedule</a>
+                </div>
+                <div class="list-group-item mt-3">
+                    <i class="fa-regular fa-rectangle-list img-fluid"></i>
+                    <a href="">Seek clarification if needed</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end:main-content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

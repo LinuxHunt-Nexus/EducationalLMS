@@ -1,0 +1,36 @@
+.main {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5%;
+}
+
+.main input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  outline-offset: none;
+}
+
+.main form .inputDiv1 {
+  position: relative;
+}
+
+.inputDiv1 .ac-icon {
+  position: absolute;
+  top: 0;
+  padding: 14px;
+  right: 0;
+  color: gray;
+}
+.span {
+  color: #ff7a74;
+  text-decoration: none;
+}
+.span:hover {
+  color: #e4645d;
+}

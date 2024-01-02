@@ -1,0 +1,111 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin Add Teacher";
+    ViewBag.ActiveSideNav = SideNavBar.NavTeacher.ToString();
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.StudentCertificate.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/extendted.css" asp-append-version="true" />
+}
+
+<!-- start :main content -->
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_TeacherSubMenuPartial'/>
+    </div>
+    <!-- end col-2 -->
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="icon fs-3 side-menu"
+                  name="add-circle-sharp"
+                  onclick="Submenu(this)"></ion-icon>
+        <div class="row information">
+            <div class="col-md-12 col-lg-6 p-5">
+                <form class="d-flex flex-column">
+                    <div class="d-flex justify-content-between">
+                        <label for="Certificate Type">Certificate Type</label>
+                        <select class="form-select w-50">
+                            <option value="01">
+                                --- Select Types of Certificate ---
+                            </option>
+                            <option value="01">demo</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <label for="Certificate Type">Select Class</label>
+                        <select class="form-select w-50">
+                            <option value="01">--- Select Class ---</option>
+                            <option value="01">demo</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <label for="Certificate Type">Roll</label>
+                        <input type="text"
+                               placeholder="Write roll here"
+                               class="form-control w-50" />
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <label for="Certificate Type">Section</label>
+                        <input type="text"
+                               placeholder="Write section here"
+                               class="form-control w-50" />
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <label for="Certificate Type">Select Shift</label>
+                        <select class="form-select w-50">
+                            <option value="01">--- Select Shift ---</option>
+                            <option value="01">demo</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <label for="Certificate Type">Academic Due</label>
+                        <select class="form-select w-50">
+                            <option value="01">--- Select here ---</option>
+                            <option value="01">demo</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <label for="Certificate Type">Library Due</label>
+                        <select class="form-select w-50">
+                            <option value="01">--- Select here ---</option>
+                            <option value="01">demo</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <label for="Certificate Type">Section</label>
+                        <input type="text"
+                               placeholder="Write section here"
+                               class="form-control w-50" />
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <label for="Certificate Type">Application Payment Number</label>
+                        <input type="text"
+                               placeholder="Write number"
+                               class="form-control w-50" />
+                    </div>
+                    <div>
+                        <button class="mt-5 p-2 col-md-3 float-end">
+                            Submit Info
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-1">
+                <div class="line mx-auto"></div>
+            </div>
+            <div class="col-md-12 col-lg-5 py-5">
+                <div class="col-md-12 text-center mx-auto">
+                    <img src="~/assets/images/admin/certificate.png"
+                         alt=""
+                         class="img-fluid" /><br />
+                    <button class="mt-2 px-5"><i class="fa-regular fa-file-pdf px-3"></i>Download PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end : main content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

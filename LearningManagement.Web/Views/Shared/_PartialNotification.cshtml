@@ -1,0 +1,48 @@
+﻿@using LearningManagement.Web.Helper
+@using Newtonsoft.Json
+@*@using LearningManagement.Data.Enums*@
+
+@if (TempData["responseKey"] != null)
+{
+    var notification = JsonConvert.DeserializeObject<NotificationHelperModel>(TempData["responseKey"].ToString());
+    <text>
+        document.addEventListener("DOMContentLoaded", function() {
+        iziToast.@notification.Type.ToString().ToLower() ({ title: '@notification.Type.ToString()', message: '@notification.Message'});
+        });
+    </text>
+}
+
+// OR
+
+@*@if (TempData["responseKey"] is NotificationHelperModel notification)
+{
+    @:document.addEventListener("DOMContentLoaded", function() {
+
+    switch (notification.Type)
+    {
+        case NotificationType.Success:
+            @:iziToast.success({ title: 'Success', message: '@notification.Message'});
+            break;
+
+        case NotificationType.Warning:
+            @:iziToast.warning({ title: 'Warning', message: '@notification.Message'});
+            break;
+
+        case NotificationType.Error:
+            @:iziToast.error({ title: 'Error', message: '@notification.Message'});
+            break;
+
+        case NotificationType.Info:
+            @:iziToast.info({ title: 'Info', message: '@notification.Message'});
+            break;
+    }
+
+    @:});
+
+}*@
+
+
+
+
+
+

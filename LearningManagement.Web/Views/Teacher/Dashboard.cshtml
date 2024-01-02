@@ -1,0 +1,12 @@
+﻿@using LearningManagement.Data.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@*@model TModel*@
+
+@{
+    ViewBag.Title = "Teacher Dashboard";
+    Layout = "_TeacherLayout";
+    ViewBag.ActiveSideNav = SideNavBar.NavDashboard.ToString();
+}
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/dashboard.css" asp-append-version="true" />
+}

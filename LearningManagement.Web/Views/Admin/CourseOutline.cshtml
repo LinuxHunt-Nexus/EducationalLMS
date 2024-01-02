@@ -1,0 +1,118 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Course";
+    ViewBag.ActiveSideNav = SideNavBar.NavCourse.ToString(); 
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.CourseOutline.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/class-details.css" asp-append-version="true" />
+}
+<!-- start :main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_CourseSubMenuPartial '/>
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-8 col-lg-7">
+        <ion-icon class="fs-3 side-menu icon" name="add-circle-sharp" onclick="Submenu(this)"></ion-icon>
+        <div class="row information p-5">
+            <div class="bg-image">
+                <div class="row align-items-center">
+                    <div class="col-md-8 p-5">
+                        <h4 class="text-white">Psychology</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="~/assets/images/course/zoombtn.png"
+                             alt=""
+                             class="img-fluid mx-5 p-1"
+                             style="height: 40px; width: 40px"/>
+                        <a href="" class="p-4"><button class="course-btn border-0">start live class</button></a>
+                        <!-- <button class="course-btn">start live class</button> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row py-3">
+                <p class="fw-bold">Class Assignment</p>
+                <div class="card">
+                    <div class="row align-items-center p-3">
+                        <div class="col-md-8">
+                            <p>
+                                What are the key factors influencing human behavior?
+                            </p>
+                            <p class="fs-6">
+                                For Section: A <br/>
+                                Due: 28-08-2022
+                            </p>
+                        </div>
+                        <p class="col-md-4 text-end">
+                            Posted on: <br/><span> 15th January, 2022 </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-3">
+                <div class="card">
+                    <div class="row align-items-center p-3">
+                        <div class="col-md-8">
+                            <p>
+                                How does memory function and influence our perception of
+                                reality?
+                            </p>
+                            <p class="fs-6">
+                                For Section: A <br/>
+                                Due: 28-08-2022
+                            </p>
+                        </div>
+                        <p class="col-md-4 text-end">
+                            Posted on: <br/><span> 16th January, 2022 </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- end section main form -->
+        </div>
+        <div class="row py-3">
+            <div class="col-md-12 mx-auto footer">
+                <div class="row align-items-center">
+                    <div class="col-md-12 col-lg-8 p-3">
+                        <h6>Join me to draw up a mind map!</h6>
+                        <p>All Sections</p>
+                        <p>Link here: https://draw.ai/ADKLLGHD</p>
+                    </div>
+                    <p class="col-md-12 col-lg-4 text-lg-end">
+                        Posted on: <br/><span> 16th January, 2022 </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-lg-3 mx-auto">
+        <div class="report">
+            <p>To Do</p>
+            <hr />
+            <div class="list-group mt-4">
+                <div class="list-group-item mt-3">
+                    <i class="fa-regular fa-rectangle-list"></i>
+                    <a href="">Participate in class discussions</a>
+                </div>
+                <div class="list-group-item mt-3">
+                    <i class="fa-regular fa-rectangle-list"></i>
+                    <a href="">Set up a study schedule</a>
+                </div>
+                <div class="list-group-item mt-3">
+                    <i class="fa-regular fa-rectangle-list "></i>
+                    <a href="">Seek clarification if needed</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end:main-content -->
+
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

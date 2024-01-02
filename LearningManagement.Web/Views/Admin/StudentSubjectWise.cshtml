@@ -1,0 +1,121 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Student";
+    ViewBag.ActiveSideNav = SideNavBar.NavStudent.ToString(); 
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.StudentSubjectWise.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/student-info.css" asp-append-version="true" />
+}
+
+<!-- start :main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-4 col-lg-2 nav-div">
+        <partial name='_StudentSubMenuPartial ' />
+    </div>
+    <!-- end col-2 -->
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="icon fs-3 side-menu"
+                  name="add-circle-sharp"
+                  onclick="Submenu(this)"></ion-icon>
+
+        <div class="row information p-3">
+            <h2 class="text-center">Subject Wise Student</h2>
+            <div class="col-md-8 mx-auto">
+                <input type="text" placeholder="Search" class="form-control" />
+            </div>
+            <div class="row py-4">
+
+
+                <div class="card table-card py-4">
+                    <h2>All Student</h2>
+                    <table class="table no-border text-center">
+                        <thead>
+                        <th>Name</th>
+                        <th>Id</th>
+                        <th>Department</th>
+                        <th>Date</th>
+                        <th>Attendence Status</th>
+                        <th>Download</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Panthera Leo</td>
+                                <td>10102</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><a href=""><img src="~/assets/images/dashboard/Group 134.png" alt="" /></a></td>
+                            </tr>
+                            <tr class="">
+                                <td>Homo Sapiens</td>
+                                <td>10102</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><img src="~/assets/images/dashboard/Group 134.png" alt="" /></td>
+                            </tr>
+                            <tr class="">
+                                <td>Rosa Gallica</td>
+                                <td>10102</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><img src="~/assets/images/dashboard/Group 134.png" alt="" /></td>
+                            </tr>
+                            <tr class="">
+                                <td>Harry Brook</td>
+                                <td>10102</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><img src="~/assets/images/dashboard/Group 134.png" alt="" /></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end main-content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

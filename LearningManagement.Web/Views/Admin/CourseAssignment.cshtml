@@ -1,0 +1,89 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Course";
+    ViewBag.ActiveSideNav = SideNavBar.NavCourse.ToString(); 
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.CourseAssignment.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/course.css" asp-append-version="true" />
+}
+<!-- start :main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_CourseSubMenuPartial '/>
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="fs-3 side-menu icon" name="add-circle-sharp" onclick="Submenu(this)"></ion-icon>
+        <div class="row information p-3">
+            <h2 class="text-center">Assignment</h2>
+            <div class="row">
+                <form action="">
+                    <div class="row">
+                        <div class="col-md-4 mt-2 lg-mt-0">
+                            <label>Select Department</label>
+                            <select class="form-select text-muted">
+                                <option value="01">
+                                    Select Dept
+                                </option>
+                                <option value="01">BBA</option>
+                                <option value="01">CSE</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mt-2 lg-mt-0">
+                            <label>Shift</label>
+                            <select class="form-select text-muted">
+                                <option value="01">
+                                    Select Shift
+                                </option>
+                                <option value="01">Moroning</option>
+                                <option value="01">Evening</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mt-2 lg-mt-0">
+                            <label>Course Code</label>
+                            <select class="form-select">
+                                <option>Course List</option>
+                                <option value="2">MAT 101</option>
+                                <option value="3">Eng 102</option>
+                                <option value="4">ECO 102</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mt-2 lg-mt-0">
+                            <label>Assignment No</label>
+                            <select class="form-select">
+                                <option>Types</option>
+                                <option value="2">1</option>
+                                <option value="3">1</option>
+                                <option value="4">2</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mt-2 lg-mt-0">
+                            <label>Submission Date</label>
+                            <input type="date" name="" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Add Files</label>
+                            <input type="file" class="form-control" />
+                        </div>
+                    </div>
+                    <button class="mt-3 btn">submit info</button>
+                </form>
+            </div>
+
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end:main-content -->
+
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

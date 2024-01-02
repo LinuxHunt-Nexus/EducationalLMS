@@ -1,0 +1,18 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Calender";
+    ViewBag.ActiveSideNav = SideNavBar.NavCalender.ToString(); 
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/calendar.css" asp-append-version="true" />
+}
+
+<!-- start calendar -->
+<div id='calendar'></div>
+<!-- end : calendar -->
+@section Scripts {
+    <script src="~/assets/js/index.global.js"></script>
+    <script src="~/assets/js/calendar.js"></script>
+}

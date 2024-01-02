@@ -1,0 +1,61 @@
+﻿@using LearningManagement.Data.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using LearningManagement.Data.ViewModels
+@model IEnumerable<InstitutionViewModel>
+@{
+    ViewBag.Title = "Institution List";
+    Layout = "_AppAdminLayout";
+    ViewBag.ActiveSideNav = SideNavBar.NavInstitutionList.ToString();
+}
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/dashboard.css" asp-append-version="true" />
+}
+
+
+<!-- start :main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card table-card py-3">
+                    <h2 class="head">Institution List</h2>
+                    <table class="table no-border text-center">
+                        <thead>
+                            <tr>
+                                <th>Logo</th>
+                                <th>Institution Name</th>
+                                <th>Email</th>
+                                <th>Contact Number</th>
+                                <th>TagLine</th>
+                                <th>Website</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="~/Images/@(string.IsNullOrEmpty(item.InstitutionLogoName) ? "default-image.jpg" : item.InstitutionLogoName)"
+                                             alt="" />
+                                    </td>
+                                    <td>@item.InstitutionName</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.ContactNumber</td>
+                                    <td>@item.BrandingTagLine</td>
+                                    <td>@item.Website</td>
+                                    <td>
+                                        <a class="btn btn-sm" href="~/AppAdmin/InstitutionInfo/@item.InstitutionId"><i class="fa-solid fa-pen-to-square mx-2"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main-content -->
+@section Scripts {
+}

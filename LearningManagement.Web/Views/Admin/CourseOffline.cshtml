@@ -1,0 +1,143 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Course";
+    ViewBag.ActiveSideNav = SideNavBar.NavCourse.ToString(); 
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.CourseOffline.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/course.css" asp-append-version="true" />
+}
+<!-- start :main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_CourseSubMenuPartial '/>
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="fs-3 side-menu icon" name="add-circle-sharp" onclick="Submenu(this)"></ion-icon>
+        <div class="row information p-3">
+            <div class="row p-2">
+                <div class="col-md-2">
+                    <p>Offline Class</p>
+                </div>
+                <div class="col-md-5">
+                    <select class="form-select w-50">
+                        <option value="01">--- Select Grade Here ---</option>
+                        <option value="01">demo</option>
+                    </select>
+                </div>
+                <div class="col-md-4 py-3 py-md-0">
+                    <input type="text"
+                           name=""
+                           placeholder="search"
+                           class="form-control" />
+                </div>
+            </div>
+            <hr />
+
+            <div class="row p-2">
+                <h4>10th Grade recorded class.</h4>
+                <!-- card -->
+                <div class="d-flex flex-column-reverse flex-lg-row align-items-center">
+                    <div class="col-md-12 col-lg-5 card mx-auto">
+                        <div class="row align-items-center p-2">
+                            <div class="col-md-1">
+                                <i class="fa-solid fa-caret-down fa-rotate-270"
+                                   style="color: #ff7a74"></i>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="~/assets/images/course/Mask group (1).png"
+                                     alt=""
+                                     class="img-fluid" />
+                            </div>
+                            <div class="col-md-8">
+                                <p class="fs-6">Exploring the Science of Behavior</p>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center p-2">
+                            <div class="col-md-1">
+                                <i class="fa-solid fa-caret-down fa-rotate-270 icon"
+                                   style="color: #ff7a74"></i>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="~/assets/images/course/Mask group (2).png"
+                                     alt=""
+                                     class="img-fluid" />
+                            </div>
+                            <div class="col-md-8">
+                                <p class="fs-6">Exploring the Science of Behavior</p>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center p-2">
+                            <div class="col-md-1">
+                                <i class="fa-solid fa-caret-down fa-rotate-270 icon"
+                                   style="color: #ff7a74"></i>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="~/assets/images/course/Mask group (3).png"
+                                     alt=""
+                                     class="img-fluid" />
+                            </div>
+                            <div class="col-md-8">
+                                <p class="fs-6">Exploring the Science of Behavior</p>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center p-2">
+                            <div class="col-md-1">
+                                <i class="fa-solid fa-caret-down fa-rotate-270 icon"
+                                   style="color: #ff7a74"></i>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="~/assets/images/course/Mask group (2).png"
+                                     alt=""
+                                     class="img-fluid" />
+                            </div>
+                            <div class="col-md-8">
+                                <p class="fs-6">Exploring the Science of Behavior</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-7 p-5">
+                        <h4 class="text-center">
+                            Exploring the Science of Behavior
+                        </h4>
+                        <p class="text-center">
+                            An introduction to psychology
+                        </p>
+                        <iframe width="400"
+                                height="215"
+                                src="https://www.youtube.com/embed/7emS3ye3cVU"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        <div class="row py-2 mx-auto px-0">
+                            <div class="col-2">
+                                <img src="~/assets/images/course/image 69.png"
+                                     alt=""
+                                     class="img-fluid" />
+                            </div>
+                            <div class="col-6 py-2">
+                                <input type="text" name="" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end:main-content -->
+
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

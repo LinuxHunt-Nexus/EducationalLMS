@@ -1,0 +1,221 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Calender";
+    ViewBag.ActiveSideNav = SideNavBar.NavIndex.ToString();
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.AcademicYear.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/extendted.css" asp-append-version="true" />
+}
+
+
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_AdminSubMenuPartial'/>
+    </div>
+
+
+    <div x-data="initializeData()" class="col-md-12 col-lg-10">
+        <ion-icon class="icon fs-3 side-menu" name="add-circle-sharp" onclick="Submenu(this)"></ion-icon>
+        <div class="row information p-3">
+            <div class="col-1">
+                <button class="btn d-inline  mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="fa-solid fa-plus "></i>
+                </button>
+            </div>
+
+            <!-- form  -->
+            <div class="collapse" id="collapseExample">
+                <h2 class="text-center">Add New Session</h2>
+                <form class="form w-100" x-on:submit.prevent="addYearSubmit">
+                    <label class="py-2">Session Name</label>
+                    <input type="text" placeholder="Session Name" required class="form-control" x-model="formSession.SessionName"/>
+
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <label class="py-2">Start Session</label>
+                            <input id="inputStartDate" type="text" placeholder="Start Date" required class="form-control" x-model="formSession.StartDate"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="py-2">End Session</label>
+                            <input id="inputEndDate" type="text" placeholder="End Date" class="form-control" x-model="formSession.EndDate"/>
+                        </div>
+                    </div>
+
+                    <label class="py-2">Session Description</label>
+                    <textarea placeholder="Session Description" required class="form-control" x-model="formSession.SessionDescription"></textarea>
+
+                    <button type="submit" class="btn mt-3 mb-5">add</button>
+                </form>
+            </div>
+
+            <!-- table -->
+            <h5 x-show="loading" class="text-center">loading...</h5>
+
+            <div class="col-md-12">
+                <div class="card table-card py-3">
+                    <h2 class="head">Session List</h2>
+                    <table class="table no-border text-center">
+                        <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Session Name</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Change Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <template x-for="(item, index) in sessionData">
+                            <tr>
+                                <td x-text="index+1"></td>
+                                <td x-text="item.sessionName"></td>
+                                <td x-text="item.startDate"></td>
+                                <td x-text="item.endDate"></td>
+                                <td>
+                                    <button class="btn btn-sm">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+
+                                    <button class="btn btn-sm"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </template>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/assets/js/submenu.js"></script>
+
+    <script>
+        // alpine js cdn linked in admin layout
+        function initializeData() {
+            const inputStartDate = document.getElementById("inputStartDate");
+            const inputEndDate = document.getElementById("inputEndDate");
+
+            const dateOptions = {
+                altInput: true,
+                allowInput:true,
+                altFormat: "F j, Y",
+                dateFormat: "Y-m-d"
+            }
+
+            return {
+                loading: false,
+                sessionData: [],
+                formSession: {
+                    SessionName: '',
+                    StartDate: '',
+                    EndDate: '',
+                    SessionDescription: ''
+                },
+
+                // add year
+                async addYearSubmit() {
+                    const url = '@Url.Action("AcademicYear","Admin")';
+                    const { SessionName, StartDate, EndDate, SessionDescription } = this.formSession;
+                   
+
+                    const formData = {
+                        SessionName,
+                        StartDate: StartDate,
+                        EndDate: EndDate,
+                        SessionDescription
+                    };
+
+
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(formData)
+                        });
+
+
+                        if (!response.ok) {
+                            const responseData = await response.json();
+                            throw new Error(responseData.message)
+                        }
+
+                        iziToast.success({
+                            title: 'Success',
+                            message: 'Session was successfully submitted'
+                        });
+
+                        // reset form
+                        this.formSession = {};
+                        inputStartDate._flatpickr.clear();
+                        inputEndDate._flatpickr.clear();
+
+                        // get new data
+                        this.getYears();
+
+                    } catch (error) {
+                        iziToast.error({ title: 'Error', message: error.message });
+                        console.error('An error occurred while sending the request:', error);
+                    }
+                },
+
+                // get years
+                async getYears() {
+                    const url = '@Url.Action("GetAcademicYear","Admin")';
+
+                    this.loading = true;
+
+                    try {
+                        const response = await fetch(url);
+
+
+                        if (!response.ok) {
+                            console.error("error getting years");
+                        }
+
+                        const responseData = await response.json();
+
+                        this.sessionData = responseData.map(item => ({
+                            ...item,
+                            startDate: moment(item.startDate).format('DD MMM, YYYY'),
+                            endDate: moment(item.endDate).format('DD MMM, YYYY'),
+                        }));
+
+                    } catch (error) {
+                        console.error(error);
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+
+
+                init() {
+                    this.getYears();
+                    
+
+                    // set min/max dates         
+                    const startDateInstence = flatpickr(inputStartDate, {
+                        ...dateOptions,
+                        onChange: function (selectedDates, dateStr, instance) {
+                            startEndInstence.set('minDate', dateStr);
+                        }
+                    });
+
+                    const startEndInstence = flatpickr(inputEndDate, {
+                        ...dateOptions,
+                        onChange: function (selectedDates, dateStr, instance) {
+                            startDateInstence.set('maxDate', dateStr);
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+
+}

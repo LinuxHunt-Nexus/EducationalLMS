@@ -1,0 +1,178 @@
+﻿@using LearningManagement.Data.Enums
+@using LearningManagement.Data.ViewModels
+@model TeacherModel
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin Add Teacher";
+    ViewBag.ActiveSideNav = SideNavBar.NavTeacher.ToString();
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.AddTeacher.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/extendted.css" asp-append-version="true" />
+}
+
+<!-- start :main content -->
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_TeacherSubMenuPartial'/>
+    </div>
+   
+    <!-- end col-2 -->
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="icon fs-3 side-menu" name="add-circle-sharp" onclick="Submenu(this)"></ion-icon>
+
+        <div class="row information p-3">
+            <h2 class="text-center">Add Teacher</h2>
+            <form class="form w-100" asp-route-returnUrl="@ViewBag.ReturnUrl" asp-controller="Admin" asp-action="AddTeacher" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>first name</label>
+                        <input type="text" placeholder="First Name *" required asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="err"></span>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Last name</label>
+                        <input type="text" placeholder="Last Name *" required asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="err"></span>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Email</label>
+                        <input type="text" placeholder="Email Address *" required asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="err"></span>
+                    </div>                 
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Password</label>
+                        <input type="password" placeholder="Password" asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="err"></span>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Phone Number</label>
+                        <input type="text" placeholder="Phone Number *" required asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="err"></span>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Birth Date</label>
+                        <input type="date" required asp-for="BirthDate" class="form-control" />
+                        <span asp-validation-for="BirthDate" class="err"></span>
+                    </div>          
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>Join date</label>
+                        <input type="date" required asp-for="JoiningDate" class="form-control" />
+                        <span asp-validation-for="JoiningDate" class="err"></span>
+                    </div>
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>Gender</label>
+                        <select asp-for="Gender" class="form-select">
+                            <option>Gender*</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>Religion</label>
+                        <select asp-for="Religion" class="form-select">
+                            <option>Religion*</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Hinduism">Hinduism</option>
+                            <option value="Buddhism">Buddhism</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>Blood Group</label>
+                        <select asp-for="BloodGroup" class="form-select">
+                            <option>Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>select photo</label>
+                        <input asp-for="ImageFile" type="file" class="form-control" />
+                       @* <input asp-for="ImageFile" type="hidden" class="form-control" />*@
+                    </div>
+
+                </div>
+                <button type="submit" class="mt-3 btn">add</button>
+            </form>
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end : main content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+
+
+    <script>
+        //document.getElementById('imageInput').addEventListener('change', function (event) {
+        //    const file = event.target.files[0];
+        //    const reader = new FileReader();
+
+     
+        //    reader.onload = function (event) {
+        //        const img = new Image();
+
+        //        img.onload = function () {
+        //            const canvas = document.createElement('canvas');
+        //            const ctx = canvas.getContext('2d');
+
+        //            const maxWidth = 500;
+        //            const maxHeight = 500;
+
+        //            let width = img.width;
+        //            let height = img.height;
+
+        //            if (width > maxWidth) {
+        //                height *= maxWidth / width;
+        //                width = maxWidth;
+        //            }
+
+        //            if (height > maxHeight) {
+        //                width *= maxHeight / height;
+        //                height = maxHeight;
+        //            }
+
+        //            canvas.width = width;
+        //            canvas.height = height;
+
+        //            // Draw the image on the canvas with the resized dimensions
+        //            ctx.drawImage(img, 0, 0, width, height);
+
+        //            // Get the compressed data from the canvas
+        //            const compressedData = canvas.toDataURL('image/jpeg', 0.7); // Set your desired compression level here (0.0 - 1.0)
+
+        //            console.log(compressedData)
+
+        //            // Store the compressed data in the hidden input
+        //            document.getElementById('ImageFile').value = compressedData;
+        //        };
+
+        //        // Set the image source to trigger the 'onload' event
+        //        img.src = event.target.result;
+        //    };
+
+        //    // Read the selected image as Data URL
+        //    reader.readAsDataURL(file);
+        //});
+    </script>
+
+}

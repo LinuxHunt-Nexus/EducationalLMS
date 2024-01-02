@@ -1,0 +1,102 @@
+﻿@using LearningManagement.Data.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using LearningManagement.Data.ViewModels
+@model InstitutionViewModel
+@{
+    Layout = "_AppAdminLayout";
+    ViewData["Title"] = "Institution Info";
+    ViewBag.ActiveSideNav = SideNavBar.NavInstitutionList.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/admin-account.css" asp-append-version="true" />
+}
+
+
+<!-- start: main-content -->
+<div class="row px-lg-4 ">
+    <div class="col-md-12 col-lg-7">
+        <ion-icon class="icon fs-3 side-menu"
+                  name="add-circle-sharp"
+                  onclick="Submenu(this)"></ion-icon>
+        <form class="form w-100" asp-route-returnUrl="@ViewBag.ReturnUrl" asp-controller="AppAdmin" asp-action="InstitutionInfo" method="post" enctype="multipart/form-data">
+            <div class="row information p-5">
+                <div class="col-md-12">
+                    <p class="info-border col-md-8">Change Institution Information</p>
+
+                    <div class="row mt-4">
+                        <div class="col-lg-6">
+                            <label>Institution Name</label>
+                            <input type="hidden" placeholder="Institution Name" required asp-for="InstitutionId" class="form-control" />
+                            <input type="text" placeholder="Institution Name" required asp-for="InstitutionName" class="form-control" />
+                            <span asp-validation-for="InstitutionName" class="err"></span>
+                        </div>
+                        <div class="col-lg-6 mt-3 mt-lg-0">
+                            <label>Contact Number</label>
+                            <input type="text" placeholder="Contact Number" required asp-for="ContactNumber" class="form-control" />
+                            <span asp-validation-for="ContactNumber" class="err"></span>
+                        </div>
+                    </div>
+                    <div class="col mt-3">
+                        <label>Email</label>
+                        <input type="text" placeholder="Email" required asp-for="Email" class="form-control" />
+                    </div>
+                    <div class="col mt-3">
+                        <label>Website</label>
+                        <input type="text" placeholder="Website" asp-for="Website" class="form-control" />
+                    </div>
+                    <div class="col mt-3">
+                        <label>Branding TagLine</label>
+                        <input type="text" placeholder="BrandingTagLine" asp-for="BrandingTagLine" class="form-control" />
+                    </div>
+                    <div class="col mt-3">
+                        <label>Address</label>
+                        <textarea type="text"
+                                  asp-for="Address"
+                                  placeholder="Enter your address here"
+                                  class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-6 mt-2 lg-mt-0">
+                        <label>select Logo</label>
+                        <input asp-for="ImageFile" type="file" class="form-control" />
+                    </div>  
+                    <div class="col-md-6 mt-2 lg-mt-0">
+                        <img class="img-fluid" src="~/Images/@(string.IsNullOrEmpty(Model.InstitutionLogoName) ? "default-image.jpg" : Model.InstitutionLogoName)" alt="" />
+                    </div>
+                    <button type="submit" class="mt-3">Update</button>
+
+                </div>
+                <!-- end section main form -->
+            </div>
+        </form>
+    </div>
+    <div class="col-md-12 col-lg-3 mx-auto">
+        <div class="report mt-4 mt-lg-0">
+            <p class="info-border">Exam Report</p>
+            <div class="list-group mt-4">
+                <a href="">
+                    <div class="list-group-item mt-3">
+                        <i class="fa-regular fa-circle-check img-fluid"></i>
+                        2022-2023 all results
+                    </div>
+                </a>
+                <a href="">
+                    <div class="list-group-item mt-3">
+                        <i class="fa-regular fa-circle-check img-fluid"></i>
+                        Grade A final exam
+                    </div>
+                </a>
+                <a href="">
+                    <div class="list-group-item mt-3">
+                        <i class="fa-regular fa-circle-check img-fluid"></i>
+                        Postgraduate report
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main content -->
+@section Scripts {
+   
+}

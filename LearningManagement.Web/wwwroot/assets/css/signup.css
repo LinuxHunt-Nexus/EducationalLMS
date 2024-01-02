@@ -1,0 +1,102 @@
+form a:hover {
+  color: #e4645d;
+}
+.primary-bg {
+  border: 1px solid #ff7a74;
+  color: #ffffff;
+}
+.primary-bg:hover {
+  background-color: #e4645d;
+  color: #ffffff;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main .inputDiv1 input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  outline-offset: none;
+}
+
+.main form .inputDiv1 {
+  position: relative;
+}
+
+.inputDiv1 .ac-icon {
+  position: absolute;
+  top: 0;
+  padding: 14px;
+  right: 0;
+  color: gray;
+}
+
+.inputDiv1 .last-name {
+  margin-right: 16px;
+}
+
+.inputDiv2 img {
+  height: 30px;
+  width: 30px;
+}
+
+.main form .inputDiv2 {
+  position: relative;
+}
+
+.inputDiv2 .btn {
+  border: 1px solid rgba(56, 74, 89, 1);
+  border-radius: 5px;
+}
+
+.inputDiv2 .google {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  padding: 5px;
+}
+
+.inputDiv2 .log {
+  color: #384a59;
+  font-size: 20px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  margin-left: 30px;
+  margin-top: -5px;
+}
+
+.main button {
+  background-color: #ff7a74;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 20px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.main button:hover {
+  color: #ffffff;
+  background-color: #e4645d;
+}
+
+.span {
+  color: #ff7a74;
+  text-decoration: none;
+}
+
+.hr {
+  width: 45%;
+  height: 1px;
+  background-color: rgba(161, 161, 161, 1);
+}

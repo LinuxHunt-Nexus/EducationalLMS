@@ -1,0 +1,330 @@
+﻿@using LearningManagement.Data.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@*@model TModel*@
+
+@{
+    ViewBag.Title = "Admin Dashboard";
+    Layout = "_InstitutionAdminLayout";
+    ViewBag.ActiveSideNav = SideNavBar.NavDashboard.ToString(); 
+}
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/dashboard.css" asp-append-version="true" />
+}
+
+<div class="row mx-auto">
+    <div class="col-lg-12 col-xl-9">
+        <div class="row gap-2 mx-auto">
+            <p class="head fs-3 ">overview</p>
+
+            <div class="card over-card py-2">
+                <p>
+                    <i class="fa-solid fa-circle-check mx-2" style="color: #ff7a74"></i>Course in Progress
+                </p>
+                <p class="mx-2 counts">20</p>
+            </div>
+
+
+            <div class="card over-card p-2">
+                <p>
+                    <i class="fa-solid fa-circle-check mx-2" style="color: #ff7a74"></i>Course Completed
+                </p>
+                <p class="mx-2 counts">137</p>
+            </div>
+
+
+            <div class="card over-card p-2">
+                <p>
+                    <i class="fa-solid fa-circle-check mx-2" style="color: #ff7a74"></i>Total Attendance
+                </p>
+                <p class="mx-2 counts">623</p>
+            </div>
+
+
+            <div class="card over-card p-2">
+                <p>
+                    <i class="fa-solid fa-circle-check mx-2" style="color: #ff7a74"></i>Total Class Test
+                </p>
+                <p class="mx-2 counts">20</p>
+            </div>
+
+
+            <div class="card over-card p-2">
+                <p>
+                    <i class="fa-solid fa-circle-check mx-2" style="color: #ff7a74"></i>Total Student of 2023
+                </p>
+                <p class="mx-2 counts">2314</p>
+            </div>
+        </div>
+        <div class="row py-4">
+            <div class="col-md-12">
+                <div class="card table-card">
+                    <div class="d-flex justify-content-between py-4 px-2">
+                        <p class="d-inline head">Submitted Tests</p>
+                        <div class="col-md-3">
+                            <select class="form-select text-muted">
+                                <option value="01">
+                                    --- Select Class ---
+                                </option>
+                                <option value="01">demo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <table class="table no-border text-center">
+                        <thead>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Date of Submission</th>
+                        <th>Delay Status</th>
+                        <th>Download</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Panthera Leo</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><a href=""><img src="~/assets/images/dashboard/Group 134.png" alt="" /></a></td>
+                            </tr>
+                            <tr class="">
+                                <td>Homo Sapiens</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><img src="~/assets/images/dashboard/Group 134.png" alt="" /></td>
+                            </tr>
+                            <tr class="">
+                                <td>Rosa Gallica</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><img src="~/assets/images/dashboard/Group 134.png" alt="" /></td>
+                            </tr>
+                            <tr class="">
+                                <td>Harry Brook</td>
+                                <td>Mathematics</td>
+                                <td>June 18, 2022</td>
+                                <td>
+                                    <div class="button b2" id="button-10">
+                                        <input type="checkbox" class="checkbox" />
+                                        <div class="knobs">
+                                            <span>YES</span>
+                                        </div>
+                                        <div class="layer"></div>
+                                    </div>
+                                </td>
+                                <td><img src="~/assets/images/dashboard/Group 134.png" alt="" /></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row px-1 mt-4">
+                    <div class="col-md-6 col-lg-5 px-1">
+                        <div class="card p-2">
+                            <div class="row p-2">
+                                <p class="d-inline col-md-6 fw-bold">Top Student</p>
+                                <div class="col-md-6">
+                                    <select class="form-select text-muted">
+                                        <option value="01">
+                                            Select Class
+                                        </option>
+                                        <option value="01">demo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row py-1">
+                                <div class="col-4">
+                                    <img src="~/assets/images/dashboard/profile1.png" alt="" class="img-fluid"
+                                         style="height: 53px; width: 53px;" />
+                                </div>
+                                <div class="col-8">
+                                    <p class="fw-bold">Harry Jackson<br><span class="fw-normal">Average Score: 93%</span></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="~/assets/images/dashboard/profile.png" alt="" class="img-fluid"
+                                         style="height: 53px; width: 53px;" />
+                                </div>
+                                <div class="col-8">
+                                    <p class="fw-bold">Look Jonathan<br><span class="fw-normal"> Score: 93%</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-lg-7 mt-4 mt-md-0 px-3">
+                        <div class="row card p-2">
+                            <div class="d-flex justify-content-between">
+                                <p class="fw-bold">Groups</p>
+                                <a href="#">view all</a>
+                            </div>
+                            <div class="d-flex py-1">
+                                <img src="~/assets/images/dashboard/group1.png" alt="" class="img-fluid"
+                                     style="height: 53px;width: 53px;" />
+                                <div class="mx-3">
+                                    <p class="lh-1 fw-bold">Teacher’s Group</p>
+                                    <p class="fs-8 lh-1">Wade Warren: I’m facing issues in downloading.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <img src="~/assets/images/dashboard/group11.png" alt="" class="img-fluid"
+                                     style="height: 53px;width: 53px;" />
+                                <div class="mx-3">
+                                    <p class="lh-1 fw-bold">6th Grade</p>
+                                    <p class="fs-8 lh-1">You: I’ll take a quiz test tomorrow.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- end modify -->
+    <!-- out -->
+    <!--last col  -->
+    <div class="col-lg-12 col-xl-3 py-lg-4">
+        <h3 class="heading">Upcoming Tests</h3>
+        <div class="row ">
+            <div class="col-md-6 col-xl-12">
+                <div class="card p-3">
+                    <div class="row gap-1 align-items-center shadow-sm">
+                        <div class="col-1">
+                            <img src="~/assets/images/dashboard/Group 129.png" alt="" />
+
+                        </div>
+                        <div class="col-6">
+                            <p>Basic Computer</br><span>Class Test : 6</span></p>
+                        </div>
+                        <div class="col-4 text-end">
+                            <p class="date">June 20, 2023</p>
+                        </div>
+                    </div>
+                    <div class="row gap-1 align-items-center shadow-sm">
+                        <div class="col-1">
+                            <img src="~/assets/images/dashboard/Group 130.png" alt="">
+
+                        </div>
+                        <div class="col-6">
+                            <p>Mathematics</br><span>Class Test : 6</span></p>
+                        </div>
+                        <div class="col-4 text-end">
+                            <p class="date">June 20, 2023</p>
+                        </div>
+                    </div>
+                    <div class="row gap-2 align-items-center shadow-sm">
+                        <div class="col-1">
+                            <img src="~/assets/images/dashboard/Group 131.png" alt="" />
+                        </div>
+                        <div class="col-6">
+                            <p>Chemistry</br><span>Class Test : 6</span></p>
+                        </div>
+                        <div class="col-4 text-end">
+                            <p class="date">June 20, 2023</p>
+                        </div>
+                    </div>
+                    <div class="row gap-1 align-items-center shadow-sm">
+                        <div class="col-1">
+                            <img src="~/assets/images/dashboard/Group 132.png" alt="">
+
+                        </div>
+                        <div class="col-6 ">
+                            <p>Social Science</br><span>Class Test : 6</span></p>
+                        </div>
+                        <div class="col-4 text-end">
+                            <p class="date">June 20, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 2nd col -->
+            <!-- schedule -->
+            <div class="col-md-6 col-xl-12 mt-3 mt-md-0 mt-xl-3">
+                <div class="card overflow-hidden">
+                    <div class="row align-items-center p-3">
+                        <div class="col-6">
+                            <h5 class="heading">Schedule</h5>
+                            <p>June 20, 2023</p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <h3>
+                                <i class="cal-icon fa-solid fa-calendar-days"></i>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row align-items-center px-3">
+                        <div class="col-5 border-end border-3">
+                            <p class="fw-bold">11:30pm</p>
+                        </div>
+                        <div class="col-7">
+                            <p class="mb-0">
+                                <span>meeting</span><br>
+                            </p>
+                            <p class="fw-bold">new learning</p>
+                        </div>
+                        <hr>
+                        <div class="col-5 border-end border-3">
+                            <p class="fw-bold">11:30pm</p>
+                        </div>
+                        <div class="col-7">
+                            <p class="mb-0">
+                                <span>meeting</span><br>
+                            </p>
+                            <p class="fw-bold">new learning</p>
+                        </div>
+                        <hr>
+                        <div class="col-5 border-end border-3">
+                            <p class="fw-bold">11:30pm</p>
+                        </div>
+                        <div class="col-7">
+                            <p class="mb-0">
+                                <span>meeting</span><br>
+                            </p>
+                            <p class="fw-bold">new learning</p>
+                        </div>
+                        <hr>
+                        <div class="col-5 border-end border-3">
+                            <p class="fw-bold">11:30pm</p>
+                        </div>
+                        <div class="col-7">
+                            <p class="mb-0">
+                                <span>meeting</span><br>
+                            </p>
+                            <p class="fw-bold">new learning</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

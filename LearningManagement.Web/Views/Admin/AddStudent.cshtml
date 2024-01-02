@@ -1,0 +1,177 @@
+﻿@using LearningManagement.Data.Enums
+@using LearningManagement.Data.ViewModels
+@model StudentModel
+
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin Add Teacher";
+    ViewBag.ActiveSideNav = SideNavBar.NavStudent.ToString();
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.AddStudent.ToString();
+
+    var academicYears = ViewBag.AcademicYears as SelectList;
+    var Classes = ViewBag.Classes as SelectList;
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/extendted.css" asp-append-version="true" />
+}
+
+<!-- start :main content -->
+<div class="row px-lg-4">
+    <div class="col-md-12 col-lg-2 nav-div">
+        <partial name='_StudentSubMenuPartial '/>
+    </div>
+    <!-- end col-2 -->
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="icon fs-3 side-menu"
+                  name="add-circle-sharp"
+                  onclick="Submenu(this)"></ion-icon>
+
+        <div class="row information p-3">
+            <h2 class="text-center">Add Student</h2>
+            <form class="form w-100" asp-route-returnUrl="@ViewBag.ReturnUrl" asp-controller="Admin" asp-action="AddStudent" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <!--left col  -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>first name</label>
+                                <input type="text" placeholder="First Name *" required asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="err"></span>
+                            </div>
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Last name</label>
+                                <input type="text" placeholder="Last Name *" required asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="err"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>father name</label>
+                                <input type="text" placeholder="Father Name" required asp-for="FatherName" class="form-control" />
+                                <span asp-validation-for="FatherName" class="err"></span>
+                            </div>
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Mother name</label>
+                                <input type="text" placeholder="Mother Name" required asp-for="MotherName" class="form-control" />
+                                <span asp-validation-for="MotherName" class="err"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Gender</label>
+                                <select asp-for="Gender" class="form-select">
+                                    <option>Gender*</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Blood Group</label>
+                                <select asp-for="BloodGroup" class="form-select">
+                                    <option>Blood Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Birth Date</label>
+                                <input type="date" required asp-for="BirthDate" class="form-control" />
+                                <span asp-validation-for="BirthDate" class="err"></span>
+                            </div>
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Phone Number</label>
+                                <input type="text" placeholder="Phone Number *" required asp-for="Phone" class="form-control" />
+                                <span asp-validation-for="Phone" class="err"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- right col -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Email</label>
+                                <input type="text" placeholder="Email Address *" required asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="err"></span>
+                            </div>
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Password</label>
+                                <input type="password" placeholder="Password" asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="err"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Academic Year</label>
+                                <select asp-for="AcademicSessionId" class="form-select">
+                                    <option>Select Session *</option>
+                                    @foreach (var year in academicYears)
+                                    {
+                                        <option value="@year.Value">@year.Text</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>admission date</label>
+                                <input type="date" required asp-for="AdmissionDate" class="form-control text-muted" />
+                                <span asp-validation-for="AdmissionDate" class="err"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Class</label>
+                                <select asp-for="InstitutionClassId" class="form-select">
+                                    <option>Select Class *</option>
+                                    @foreach (var item in Classes)
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>Admission Number</label>
+                                <input type="text" placeholder="Admission Number" asp-for="AdmissionNumber" class="form-control" />
+                                <span asp-validation-for="AdmissionNumber" class="err"></span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Religion</label>
+                                <select asp-for="Religion" class="form-select">
+                                    <option>Religion*</option>
+                                    <option value="Muslim">Muslim</option>
+                                    <option value="Christian">Christian</option>
+                                    <option value="Hinduism">Hinduism</option>
+                                    <option value="Buddhism">Buddhism</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mt-2 lg-mt-0">
+                                <label>select photo</label>
+                                <input asp-for="ImageFile" type="file" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mt-3 btn">submit info</button>
+            </form>
+
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end : main content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

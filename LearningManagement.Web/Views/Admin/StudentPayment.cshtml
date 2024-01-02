@@ -1,0 +1,112 @@
+﻿@using LearningManagement.Data.Enums
+@using LearningManagement.Data.ViewModels
+@model IEnumerable<StudentViewModel>
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Student";
+    ViewBag.ActiveSideNav = SideNavBar.NavStudent.ToString();
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.StudentPayment.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/student-info.css" asp-append-version="true" />
+}
+
+<!-- start :main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-4 col-lg-2 nav-div">
+        <partial name='_StudentSubMenuPartial ' />
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="fs-3 side-menu icon"
+                  name="add-circle-sharp"
+                  onclick="Submenu(this)"></ion-icon>
+
+        <div class="row information p-3">
+            <div class="row p-2">
+                <div class="col-md-2">
+                    <p>Offline Class</p>
+                </div>
+                <div class="col-md-8">
+                    <select class="form-select w-50">
+                        <option value="01">--Select Grade Here--</option>
+                        <option value="01">demo</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <div class="row ">
+                        <a href="" class="col-1">
+                            <i class="fa-solid fa-copy fs-4"></i>
+                        </a>
+                        <a href="" class="col-1 mx-4">
+                            <i class="fa-solid fa-file-pdf fs-4"></i>
+                        </a>
+                        <a href="" class="col-1">
+                            <i class="fa-solid fa-print fs-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card table-card py-3">
+                        <h2 class="head">Student Payment List</h2>
+                        <table class="table no-border text-center">
+                            <thead>
+                                <tr>
+                                    <th>Students Photo</th>
+                                    <th>Students Name</th>
+                                    <th>Email</th>
+                                    <th>Class</th>
+                                    <th>Fee Type</th>
+                                    <th>Amount Due ($)</th>
+                                    <th>Payment Date</th>
+                                    <th>Change Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="~/Images/@item.ImageFileName"
+                                                 alt="" />
+                                        </td>
+                                        <td>@item.FatherName @item.LastName</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.ClassName</td>
+                                        <td>Tuition Fee</td>
+                                        <td>
+                                            <div class="button b2" id="button-10">
+                                                <input type="checkbox" class="checkbox" />
+                                                <div class="knobs">
+                                                    <span>YES</span>
+                                                </div>
+                                                <div class="layer"></div>
+                                            </div>
+                                        </td>
+                                        <td>@item.AdmissionDate?.ToString("d mmm yy")</td>
+                                        <td>
+                                            <button class="btn btn-sm">
+                                                <i class="fa-solid fa-pen-to-square mx-2"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end main-content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,33 @@
+/* course-details */
+body{
+    font-family: 'Inter',sans-serif;
+}
+.bg-image {
+    background-image: url("../images/course/course.png");
+    width: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  .information .course-btn {
+    border-radius: 25px;
+    background: #fff;
+    padding: 10px 20px;
+    color: #384a59;
+    font-size: 16px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    display: block;
+  }
+  
+  .footer{
+    background-color: #FF7A74;
+    color: #ffffff;
+    border-radius: 10px;
+    font-family: 'Inter',sans-serif;
+    
+  }
+  
+
+ 

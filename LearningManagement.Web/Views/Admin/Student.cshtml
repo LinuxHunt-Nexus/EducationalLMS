@@ -1,0 +1,57 @@
+﻿@using LearningManagement.Data.Enums
+@using LearningManagement.Data.ViewModels
+@model IEnumerable<StudentViewModel>
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Student";
+    ViewBag.ActiveSideNav = SideNavBar.NavStudent.ToString();
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.Student.ToString();
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/student-info.css" asp-append-version="true" />
+}
+
+<!-- start :main-content -->
+<div class="row px-lg-4">
+    <div class="col-md-4 col-lg-2 nav-div">
+        <partial name='_StudentSubMenuPartial ' />
+    </div>
+    <!-- end col-2 -->
+
+    <div class="col-md-12 col-lg-10">
+        <ion-icon class="fs-3 side-menu icon" name="add-circle-sharp" onclick="Submenu(this)"></ion-icon>
+        <div class="card table-card py-3">
+            <h2 class="head">Student List</h2>
+            <!-- start table  -->
+            <table class="table no-border text-center">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Birth Date</th>
+                        <th>Photo</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.BirthDate?.ToString("yyyy MMMM dd")</td>
+                            <td><a href=""><img src="~/Images/@(string.IsNullOrEmpty(item.ImageFileName) ? "default-image.png" : item.ImageFileName)" alt="" /></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <!-- end table -->
+            <!-- end section main form -->
+        </div>
+    </div>
+</div>
+<!-- end main-content -->
+@section Scripts {
+    <script type="text/javascript" src="~/assets/js/submenu.js" asp-append-version="true"></script>
+}

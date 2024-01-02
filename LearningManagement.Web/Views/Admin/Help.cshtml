@@ -1,0 +1,83 @@
+﻿@using LearningManagement.Data.Enums
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Admin-Help";
+    ViewBag.ActiveSideNav = SideNavBar.NavHelp.ToString();
+}
+
+@section CustomCSS {
+
+}
+
+<!--start: main content -->
+<div class="row mx-auto align-items-center">
+    <div class="col-md-6">
+        <img src="~/assets/images/help.svg" alt="" />
+    </div>
+    <div class="col-md-6">
+        <!-- accordion -->
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        What is an LMS?
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        A Learning Management System (LMS) is a software application designed to manage, deliver, and track educational content and training programs. It provides a platform for instructors, teachers, or administrators to create, organize, and deliver courses and learning materials to learners.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        What are the benefits of using an LMS?
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        Using an LMS offers several advantages, including:
+                        Centralized learning management: All learning materials and activities are stored in one place.
+                        Flexibility and accessibility: Learners can access courses from anywhere, anytime, using different devices.
+                        Progress tracking: Instructors can monitor learners' progress and performance.
+                        Automation: LMSs automate various administrative tasks like grading, reporting, and  content.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Who uses an LMS?
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">LMSs are utilized by various organizations and educational institutions, including schools, colleges, universities, corporations, government agencies, and non-profit organizations. They are used for employee training, professional development, online courses, blended learning, and more.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        Can an LMS support different types of content?
+                    </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Yes, modern LMSs are designed to support various content types, such as text documents, videos, audio files, presentations, quizzes, and interactive learning activities. This flexibility allows for a richer and more engaging learning experience.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                        Are LMSs secure?
+                    </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Most reputable LMS providers prioritize security and implement measures to protect user data and content. It is essential to choose an LMS that adheres to industry-standard security practices and offers data encryption, regular backups, and user authentication features.</div>
+                </div>
+            </div>
+        </div>
+        <!-- end accordion -->
+
+    </div>
+</div>
+<!-- end: main content -->

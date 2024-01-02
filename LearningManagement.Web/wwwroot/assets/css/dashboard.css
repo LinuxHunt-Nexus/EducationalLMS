@@ -1,0 +1,184 @@
+/* Dashboard */
+.test p{
+  font-size: 12px;
+}
+.table thead {
+  background-color: #e4645d;
+  color: #f8f9fd;
+  border-top-left-radius: 20px;
+}
+.counts {
+  border-bottom: 4px solid #ff7a74;
+  width: fit-content;
+  font-weight: 800;
+  color: #384a59;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  line-height: 50px; /* 125% */
+}
+.table thead tr:first-child {
+  border-radius: 20px 0 0 0;
+}
+
+.table thead tr:last-child {
+  border-radius: 0 20px 0 0;
+}
+.no-border td {
+  border: none;
+  border-bottom: 6pt solid #ffffff;
+  padding: 12px 0;
+  background-color: #f8f9fd;
+}
+.cal-icon {
+  color: #e4645d;
+}
+
+.over-card {
+  width: 19.2%;
+}
+.date {
+  color: #e4645d;
+  font-size: 8px;
+}
+.heading {
+  color: #384a59;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px; /* 140% */
+}
+
+/* switch-button */
+
+* {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  outline: none;
+}
+
+.knobs,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.button {
+  position: relative;
+  top: 50%;
+  width: 90px;
+  height: 36px;
+  margin: -20px auto 0 auto;
+  overflow: hidden;
+}
+
+.button.b2 {
+  border-radius: 20px;
+  margin-top: 0px;
+}
+
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.knobs {
+  z-index: 2;
+}
+
+.layer {
+  width: 50%;
+  background-color: #e4645d;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+/* Button 10 */
+#button-10 .knobs:before,
+#button-10 .knobs:after,
+#button-10 .knobs span {
+  position: absolute;
+  top: 4px;
+  width: 60px;
+  height: 50px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  border-radius: 2px;
+  transition: 0.3s ease all;
+}
+
+#button-10 .knobs:before {
+  content: "";
+  left: 4px;
+  width: 50%;
+  left: 46px;
+  background-color: rgb(215, 211, 210);
+  margin-top: -6px;
+}
+
+#button-10 .knobs:after {
+  content: "NO";
+  right: -4px;
+  color: #4e4e4e;
+}
+
+#button-10 .knobs span {
+  display: inline-block;
+  left: -7px;
+  color: #fff;
+  z-index: 1;
+}
+
+#button-10 .checkbox:checked + .knobs span {
+  color: #4e4e4e;
+}
+
+#button-10 .checkbox:checked + .knobs:before {
+  left: 45px;
+  background-color: #e4645d;
+}
+
+#button-10 .checkbox:checked + .knobs:after {
+  color: #fff;
+}
+
+#button-10 .checkbox:checked ~ .layer {
+  background-color: #fcebeb;
+}
+
+@media screen and (max-width: 767px) {
+  .layout {
+    margin-left: 4%;
+  }
+  .table-card {
+    overflow-x: scroll;
+    padding: 1% 3% 1% 3%;
+  }
+  .over-card {
+    width: 45%;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .layout {
+    margin-left: 4%;
+  }
+  .over-card {
+    width: 45%;
+  }
+}

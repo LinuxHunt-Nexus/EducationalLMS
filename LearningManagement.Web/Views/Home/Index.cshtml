@@ -1,0 +1,58 @@
+﻿@using LearningManagement.Data.ViewModels
+@model LoginModel
+@{  
+    ViewData["Title"] = "Home Page";
+}
+
+@section CustomCSS {
+    <link rel="stylesheet" href="~/assets/css/login.css" asp-append-version="true"/>
+}
+
+<div class="row main">
+    <div class="col-md-6">
+        <img
+            src="~/assets/images/accounts/login.png"
+            alt="login/image"
+            class="img-fluid"/>
+    </div>
+    <div class="col md-6">
+        <h2 class="text-capitalize">login</h2>
+        <p>Welcome back! Please login to your account</p>
+        <form id="account" class="form w-100" asp-route-returnUrl="@ViewBag.ReturnUrl" asp-controller="Home" asp-action="Index" method="post">
+            <div class="inputDiv1">
+                <input
+                    type="text"
+                    placeholder="Username"
+                    required
+                    asp-for="UserName"
+                    class="form-control mb-4"/>
+                <i class="ac-icon fa fa-sharp fa-user"></i>
+                <span asp-validation-for="UserName" class="err"></span>
+            </div>
+            <div class="inputDiv1">
+                <input
+                    type="password"
+                    placeholder="password"
+                    required
+                    asp-for="Password"
+                    class="form-control"/>
+                <span asp-validation-for="Password" class="err"></span>
+                <i class="fa-solid fa-eye img-fluid ac-icon"></i>
+              
+            </div>
+            <li class="text-center mt-4 list-unstyled">
+                <a href="" class="text-decoration-none text-muted">
+                    Forgot Password?
+                </a
+                >
+            </li>
+            <button id="login-submit" type="submit" class="btn w-100 mt-4">Log in</button>
+        </form>
+        <p class="text-center text-muted mt-5">
+            Don’t have an account?
+            <a href="~/Home/SignUp" class="span">
+                Sign up here
+            </a>
+        </p>
+    </div>
+</div>
