@@ -136,7 +136,7 @@ public class AdminController : Controller
 
         if (addResult.IsSuccess)
         {
-            return RedirectToAction("AddTeacher");
+            return RedirectToAction("Teacher");
         }
 
         ModelState.AddModelError("LastName", addResult.Errors.First().Message);
@@ -268,7 +268,17 @@ public class AdminController : Controller
         return View(model);
         
     }
+    public async Task<IActionResult> Details(int id)
+    {
+        if (id == null )
+        {
+            return NotFound();
+        }
+        var teacherDetails = await _teacherService.TeacherDetailsAsync(id);
 
+        return View(teacherDetails.Value);
+
+    }
     // GET
     public async Task<IActionResult> TeacherAssign()
     {
