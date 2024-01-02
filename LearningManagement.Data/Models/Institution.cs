@@ -15,6 +15,15 @@ public class Institution
 
     public DateTime CreatedAtUtc { get; set; }
 
+    // MAHADI
+    // Additional properties
+    //public bool IsActive { get; set; }
+    //public string? Founder { get; set; }
+    //public string? Accreditation { get; set; }
+    //public int? ContactPersonId { get; set; }
+    //public ContactPerson ContactPerson { get; set; }
+
+
     public virtual ICollection<AcademicSession> AcademicSessions { get; set; } = new HashSet<AcademicSession>();
     public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; } = new HashSet<ApplicationUser>();
     public virtual ICollection<InstitutionAdmin> InstitutionAdmins { get; set; } = new HashSet<InstitutionAdmin>();

@@ -18,5 +18,16 @@ public class StudentInClass
 
     public DateTime CreatedAtUtc { get; set; }
 
+
+    // MAHADI
+    // Additional properties
+    //public bool IsActive { get; set; }
+    //public bool IsEnrolled { get; set; }
+    //public string? EnrollmentStatusNotes { get; set; }
+    //public bool Attendances { get; set; }
+    //public int? PositionInClass { get; set; }
+    //public string? AcademicPerformanceNotes { get; set; }
+
+
     public virtual ICollection<TeacherWiseStudentCourse> TeacherWiseStudentCourses { get; set; } = new HashSet<TeacherWiseStudentCourse>();
 }

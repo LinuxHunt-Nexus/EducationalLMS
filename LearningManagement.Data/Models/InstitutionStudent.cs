@@ -18,9 +18,6 @@ public class InstitutionStudent
     public DateTime? BirthDate { get; set; }
     public DateTime? AdmissionDate { get; set; }
     public string? AdmissionNumber { get; set; }
-
-
-
     public DateTime CreatedAtUtc { get; set; }
 
     public Institution Institution { get; set; } = null!;
@@ -29,4 +26,20 @@ public class InstitutionStudent
     public ApplicationUser? ApplicationUser { get; set; }
 
     public virtual ICollection<StudentInClass> StudentInClasses { get; set; } = new HashSet<StudentInClass>();
+
+    // MAHADI
+    // Additional properties
+    //public string? Address { get; set; }
+    //public string? GuardianPhone { get; set; }
+    //public string? EmergencyContactName { get; set; }
+    //public string? EmergencyContactPhone { get; set; }
+    //public bool IsActive { get; set; }
+    //public bool IsEnrolled { get; set; }
+    //public string? EnrollStatusNotes { get; set; }
+    //public string? RollNumber { get; set; }
+    //public string? GuardianEmail { get; set; }
+    //public int? InstitutionClassId { get; set; }
+    //public InstitutionClass InstitutionClass { get; set; }
+    //public int? AcademicSessionId { get; set; }
+    //public AcademicSession? AcademicSession { get; set; }
 }

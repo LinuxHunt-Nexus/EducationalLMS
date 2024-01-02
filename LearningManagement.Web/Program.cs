@@ -21,7 +21,8 @@ namespace LearningManagement.Web
             builder.Services.AddAutoMapper(typeof(AcademicMappingProfile).Assembly);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            //builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
