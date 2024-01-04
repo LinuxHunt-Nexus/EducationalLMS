@@ -48,7 +48,7 @@
                             <td><img src="~/Images/@(string.IsNullOrEmpty(item.ImageFileName) ? "default-image.png" : item.ImageFileName)" alt="" class="img-fluid table-image rounded-circle" /></td>
                             <td>
                                 @* <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> | *@
-                                <a asp-action="Details" asp-route-id="@item.InstitutionTeacherId"><i class="fa-solid fa-bookmark"></i></a>
+                                <a asp-action="Details" asp-route-id="@item.InstitutionTeacherId"><i class="fa-solid fa-eye"></i></a>
                                 @* <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
                             </td>
                         </tr>
