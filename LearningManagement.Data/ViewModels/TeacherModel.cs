@@ -70,7 +70,14 @@ public class TeacherModel
     [NotMapped]
     //[Display(Name = "Degree Result")]
     public List<string>? DegreeResult { get; set; }
-    public string Subjects { get; set; }
+    [Display(Name = "Institution Name")]
+    public string? InstitutionSet
+    {
+        get => InstitutionName != null ? string.Join(", ", InstitutionName) : null;
+        set => InstitutionName = value?.Split(", ").ToList();
+    }
+    [NotMapped]
+    public List<string>? InstitutionName { get; set; }
     [Display(Name = "Is Admin")]
     public bool IsAdmin { get; set; }
     [Display(Name = "Is Active")]
@@ -81,3 +88,5 @@ public class TeacherModel
     public string? YearsOfExperience { get; set; }
 
 }
+
+// experience = organization, designation, from to year

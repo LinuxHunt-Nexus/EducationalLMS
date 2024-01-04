@@ -75,7 +75,14 @@ public class InstitutionTeacher
     //[Display(Name = "Degree Result")]
     public List<string>? DegreeResult { get; set; }
 
-    public string Subjects { get; set; }
+    [Display(Name = "Institution Name")]
+    public string? InstitutionSet
+    {
+        get => InstitutionName != null ? string.Join(", ", InstitutionName) : null;
+        set => InstitutionName = value?.Split(", ").ToList();
+    }
+    [NotMapped]
+    public List<string>? InstitutionName { get; set; }
     public bool IsAdmin { get; set; }
     public bool IsActive { get; set; }
     public string? University { get; set; }
