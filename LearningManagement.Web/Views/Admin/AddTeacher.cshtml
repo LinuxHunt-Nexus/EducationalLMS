@@ -114,9 +114,15 @@
                         </div>
                     </div>
                     <div class="col-md-2 mt-2 lg-mt-0">
-                        <label>DegreeResult</label>
+                        <label>Degree Result</label>
                         <div id="educationResultContainer">
                             <input type="text" name="DegreeResult" placeholder="Result" class="form-control mb-2" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Institution Name</label>
+                        <div id="institutionNameContainer">
+                        <input type="text" placeholder="Institution Name" name="InstitutionName" class="form-control mb-2" />
                         </div>
                     </div>
                     <div class="col-md-2 mt-2 lg-mt-0">
@@ -124,11 +130,7 @@
                         <span asp-validation-for="EduQualification" class="err"></span> 
                         <span asp-validation-for="ExamPassYear" class="err"></span>
                         <span asp-validation-for="DegreeResult" class="err"></span>
-                    </div>
-                    <div class="col-md-4 mt-2 lg-mt-0">
-                        <label>Subjects</label>
-                        <input type="text" placeholder="Subjects" asp-for="Subjects" class="form-control" />
-                        <span asp-validation-for="Subjects" class="err"></span>
+                        <span asp-validation-for="InstitutionName" class="err"></span>
                     </div>
                 </div>
 
@@ -249,7 +251,7 @@
                 // Check if any existing field is empty
                 var areAnyFieldsEmpty = false;
 
-                $("input[name='EduQualification'], input[name='ExamPassYear'], input[name='DegreeResult']").each(function () {
+                $("input[name='EduQualification'], input[name='ExamPassYear'], input[name='DegreeResult'], input[name='InstitutionName']").each(function () {
                     if ($(this).val().trim() === "") {
                         areAnyFieldsEmpty = true;
                         return false; // Exit the loop if any field is empty
@@ -267,10 +269,12 @@
                     var eduQualificationInput = '<input type="text" name="EduQualification" placeholder="Degree" class="form-control mb-2" />';
                     var educationYearInput = '<input type="text" name="ExamPassYear" placeholder="Pass Year" class="form-control mb-2" />';
                     var educationYearPassResultInput = '<input type="text" name="DegreeResult" placeholder="Result" class="form-control mb-2" />';
+                    var institutionNameContainertInput = '<input type="text" name="InstitutionName" placeholder="Institution Name" class="form-control mb-2" />';
 
                     $("#eduQualificationContainer").append(eduQualificationInput);
                     $("#educationYearContainer").append(educationYearInput);
                     $("#educationResultContainer").append(educationYearPassResultInput);
+                    $("#institutionNameContainer").append(institutionNameContainertInput);
                 } else {
                     alert("You can't add more than three fields.");
                     $("#addQualification").prop("disabled", true); // Disable the button after the limit is reached

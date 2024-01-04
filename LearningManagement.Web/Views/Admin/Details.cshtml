@@ -7,26 +7,184 @@
     ViewBag.ActiveSubMenuNav = SubMenuNavBar.TeacherList.ToString();
 }
 
-<h1>Hello</h1>
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+
+    
+    <div>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-    </dl>
-</div>
-<div>
-    @* <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> | *@
-    <a asp-action="Index">Back to List</a>
+            
+    </div>
+        <span>
+            @* <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> | *@
+            <a class="btn btn-primary" asp-action="Teacher">Back to List</a>
+        </span>
+        <div class="container mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Teacher Profile</h4>
+                    <dl class="row">
+                        <!-- Personal Information -->
+                        <div class="col-sm-6">
+                            <h4>Personal Information</h4>
+                            @if (!string.IsNullOrEmpty(Model?.ImageFileName))
+                            {
+                                <img src="~/Images/@(string.IsNullOrEmpty(Model.ImageFileName) ? "default-image.png" : Model.ImageFileName)" alt="" class="img-fluid table-image" style="height:150; width:150;" />
+                            }
+                            else
+                            {
+                                <span>No image available</span>
+                            }
+                            <br />
+                            <span>Full Name:</span>
+                            <span>@Html.DisplayFor(model => model.FirstName) </span>
+                            <span>@Html.DisplayFor(model => model.LastName)</span>
+                            <br />
+                            <span>Phone Number:</span>
+                            <span>@Html.DisplayFor(model => model.Phone)</span>
+
+                            <br />
+                            <span>Gender:</span>
+                            <span>@Html.DisplayFor(model => model.Gender)</span>
+                                
+                            <br />
+                            <span>Religion:</span>
+                            <span>@Html.DisplayFor(model => model.Religion)</span>
+
+                            <br />
+                            <span>Blood Group :</span>
+                            <span>@Html.DisplayFor(model => model.BloodGroup)</span>
+
+                            <br />
+                            <span>Date Of Birth :</span>
+                            <span>
+                                @{
+                                    var dateOfBirth = Model.BirthDate;
+                                    if (dateOfBirth != null)
+                                    {
+                                        @dateOfBirth.Value.ToString("MM/dd/yyyy")
+                                    }
+                                }
+                            </span>
+
+                            <br />
+                            <span>Joining Date:</span>
+                            <span>
+                                @{
+                                    var joiningDate = Model.JoiningDate;
+                                    if (joiningDate != null)
+                                    {
+                                        @joiningDate.Value.ToString("MM/dd/yyyy")
+                                    }
+                                }
+                            </span>
+
+                            <br />
+                            <span>NID Number:</span>
+                            <span>@Html.DisplayFor(model => model.NID)</span>
+                                
+                            <br />
+                            <span>Emergency Contact Name:</span>
+                            <span>@Html.DisplayFor(model => model.EmergencyContactName)</span>
+                                
+                            <br />
+                            <span>Emergency Contact Phone:</span>
+                            <span>@Html.DisplayFor(model => model.EmergencyContactPhone)</span>
+                        </div>
+
+                        <!-- Professional Information -->
+                        
+                        <div class="col-sm-6">
+                            <h4>Professional Information</h4>
+
+                            <span>Teaching Rating:</span>
+                            <span>@Html.DisplayFor(model => model.TeachingRating)</span>
+
+                            <br />
+                            <span>Medical Conditions:</span>
+                            <span>@Html.DisplayFor(model => model.MedicalConditions)</span>
+
+                            <br />
+                            <span>Teacher Address:</span>
+                            <span>@Html.DisplayFor(model => model.TeacherAddress)</span>
+
+                            @* <br />
+                            <span>Subjects:</span>
+                            <span>@Html.DisplayFor(model => model.Subjects)</span> 
+
+                            <br />
+                            <span>Is Admin:</span>
+                            <span>@Html.DisplayFor(model => model.IsAdmin)</span>
+
+                            <br />
+                            <span>Is Active:</span>
+                            <span>@Html.DisplayFor(model => model.IsActive)</span>
+                            <br />*@
+
+                            <!-- Educational Information -->
+                            <h4>Educational Information</h4>
+
+                            <span>University:</span>
+                            <span>@Html.DisplayFor(model => model.University)</span>
+
+                            <br />
+                            <span>Graduation Year:</span>
+                            <span>@Html.DisplayFor(model => model.GraduationYear)</span>
+
+                            <br />
+                            <span>Previous Institutions:</span>
+                            <span>@Html.DisplayFor(model => model.PreviousInstitutions)</span>
+
+                            <!-- Additional Information -->
+
+                            <br />
+                            <span>Years Of Experience:</span>
+                            <span>@Html.DisplayFor(model => model.YearsOfExperience)</span>
+
+                            <br />
+                            @* <span><u>Additional Information</u></span> *@
+                            <br />
+                            @if (!string.IsNullOrEmpty(Model.EducationQualification) &&
+                            !string.IsNullOrEmpty(Model.ExamminationPassYear) &&
+                            !string.IsNullOrEmpty(Model.DegreePassResult) &&
+                            !string.IsNullOrEmpty(Model.InstitutionSet))
+                            {
+                                var degrees = Model.EducationQualification.Split(',').Select(degree => degree.Trim()).ToArray();
+                                var passYears = Model.ExamminationPassYear.Split(',').Select(year => year.Trim()).ToArray();
+                                var gpas = Model.DegreePassResult.Split(',').Select(gpa => gpa.Trim()).ToArray();
+                                var iSet = Model.InstitutionSet.Split(',').Select(si => si.Trim()).ToArray();
+                                <span><u>Additional Information</u></span>
+                                <table style="border-collapse: collapse; width: 100%; margin-top: 10px;">
+                                    <thead>
+                                        <tr>
+                                            <th style="padding: 10px;">Institution</th>
+                                            <th style="padding: 10px;">Degree</th>
+                                            <th style="padding: 10px;">Exam Year</th>
+                                            <th style="padding: 10px;">GPA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int i = 0; i < degrees.Length && i < passYears.Length && i < gpas.Length && i < iSet.Length; i++)
+                                        {
+                                            <tr>
+                                                <td style="padding: 10px;">@iSet[i]</td>
+                                                <td style="padding: 10px;">@degrees[i]</td>
+                                                <td style="padding: 10px;">@passYears[i]</td>
+                                                <td style="padding: 10px;">@gpas[i]</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            }
+
+
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

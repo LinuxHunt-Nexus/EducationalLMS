@@ -30,6 +30,7 @@ public class TeacherRepository:BaseRepository<InstitutionTeacher>,ITeacherReposi
             institutionTeacher.EduQualification = model.EducationQualification?.Split(", ").ToList();
             institutionTeacher.ExamPassYear = model.ExamminationPassYear?.Split(", ").ToList();
             institutionTeacher.DegreeResult = model.DegreePassResult?.Split(", ").ToList();
+            institutionTeacher.InstitutionName = model.InstitutionSet?.Split(", ").ToList();
             _context.InstitutionTeachers.Add(institutionTeacher);
 
             await _context.SaveChangesAsync();

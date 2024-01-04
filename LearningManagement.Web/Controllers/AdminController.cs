@@ -132,13 +132,10 @@ public class AdminController : Controller
 
         try
         {
-                model.EduQualification = model.EducationQualification?.Split(", ").ToList();
-                model.ExamPassYear = model.ExamminationPassYear?.Split(", ").ToList();
-                model.DegreeResult = model.DegreePassResult?.Split(", ").ToList();
-            //if (!ModelState.IsValid)
-            //{ 
-            //    return View(model);
-            //} 
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             var addResult = await _authService.AddTeacherWithSignUpAsync(model);
 
             if (addResult.IsSuccess)
