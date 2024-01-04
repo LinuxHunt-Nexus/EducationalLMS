@@ -85,7 +85,32 @@ public class TeacherModel
     public string? University { get; set; }
     public int? GraduationYear { get; set; }
     public string? PreviousInstitutions { get; set; }
-    public string? YearsOfExperience { get; set; }
+
+    [Display(Name = "Organization Name")]
+    public string? OrganizationSet
+    {
+        get => Organization != null ? string.Join(", ", Organization) : null;
+        set => Organization = value?.Split(", ").ToList();
+    }
+    [NotMapped]
+    public List<string>? Organization { get; set; }
+
+    [Display(Name = "Designation")]
+    public string? DesignationSet
+    {
+        get => Designation != null ? string.Join(", ", Designation) : null;
+        set => Designation = value?.Split(", ").ToList();
+    }
+    [NotMapped]
+    public List<string>? Designation { get; set; }
+    [Display(Name = "Form To")]
+    public string? FormToYearSet
+    {
+        get => FormToYear != null ? string.Join(", ", FormToYear) : null;
+        set => FormToYear = value?.Split(", ").ToList();
+    }
+    [NotMapped]
+    public List<string>? FormToYear { get; set; }
 
 }
 

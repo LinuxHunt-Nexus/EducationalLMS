@@ -99,6 +99,24 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>University</label>
+                        <input type="" placeholder="University" asp-for="University" class="form-control" />
+                        <span asp-validation-for="University" class="err"></span>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Graduation Year</label>
+                        <input type="text" placeholder="GraduationYear" asp-for="GraduationYear" class="form-control" />
+                        <span asp-validation-for="GraduationYear" class="err"></span>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
+                        <label>Previous Institutions</label>
+                        <input type="text" placeholder="Previous Institutions" asp-for="PreviousInstitutions" class="form-control" />
+                        <span asp-validation-for="PreviousInstitutions" class="err"></span>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-2 mt-2 lg-mt-0">
                         <label>Education Qualification</label>
                         <div id="eduQualificationContainer">
@@ -133,26 +151,6 @@
                         <span asp-validation-for="InstitutionName" class="err"></span>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-4 mt-2 lg-mt-0">
-                        <label>University</label>
-                        <input type="" placeholder="University" asp-for="University" class="form-control" />
-                        <span asp-validation-for="University" class="err"></span>
-                    </div>
-                    <div class="col-md-4 mt-2 lg-mt-0">
-                        <label>Graduation Year</label>
-                        <input type="text" placeholder="GraduationYear" asp-for="GraduationYear" class="form-control" />
-                        <span asp-validation-for="GraduationYear" class="err"></span>
-                    </div>
-                    <div class="col-md-4 mt-2 lg-mt-0">
-                        <label>Previous Institutions</label>
-                        <input type="text" placeholder="Previous Institutions" asp-for="PreviousInstitutions" class="form-control" />
-                        <span asp-validation-for="PreviousInstitutions" class="err"></span>
-                    </div>
-                </div>
-
-                
                 <!--MAHADI-->
 
                 <div class="row">
@@ -199,8 +197,8 @@
                 <div class="row">
                     <div class="col-md-3 mt-2 lg-mt-0">
                         <label>Years Of Experience</label>
-                        <input type="" placeholder="Years Of Experience" asp-for="YearsOfExperience" class="form-control" />
-                        <span asp-validation-for="YearsOfExperience" class="err"></span>
+                        @* <input type="" placeholder="Years Of Experience" asp-for="YearsOfExperience" class="form-control" />
+                        <span asp-validation-for="YearsOfExperience" class="err"></span> *@
                     </div>
                     <div class="col-md-3 mt-2 lg-mt-0">
                         <label>select photo</label>
