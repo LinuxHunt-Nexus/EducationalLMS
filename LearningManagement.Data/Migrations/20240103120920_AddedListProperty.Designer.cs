@@ -4,6 +4,7 @@ using LearningManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearningManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240103120920_AddedListProperty")]
+    partial class AddedListProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,9 +202,9 @@ namespace LearningManagement.Data.Migrations
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "APPADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGMo45sRouCEGVVV96uYbNRvzC13oqKJvjHoQfyiVODOZuNxuu9/Bu7CAmmC/QWbBg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELaqjVpFMuge7Rmp/CokhG1gkwm2ylv/A9HBqVSIFggxYttpfKDe80TkUZjbXQU2KQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c6ed98d4-0998-4703-8ae4-bcfa606104b2",
+                            SecurityStamp = "67ae40c8-8c51-48af-8425-412910a45a2f",
                             TwoFactorEnabled = false,
                             UserName = "AppAdmin",
                             UserType = "AppAdmin"
@@ -433,9 +436,6 @@ namespace LearningManagement.Data.Migrations
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("getutcdate()");
 
-                    b.Property<string>("DegreePassResult")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("EducationQualification")
                         .HasColumnType("nvarchar(max)");
 
@@ -450,7 +450,10 @@ namespace LearningManagement.Data.Migrations
                     b.Property<string>("EmergencyContactPhone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ExamminationPassYear")
+                    b.Property<string>("ExamPassResult")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExamPassYear")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
