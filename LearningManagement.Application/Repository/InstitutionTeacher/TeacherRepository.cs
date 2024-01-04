@@ -27,6 +27,9 @@ public class TeacherRepository:BaseRepository<InstitutionTeacher>,ITeacherReposi
             var institutionTeacher = _mapper.Map<InstitutionTeacher>(model);
             institutionTeacher.ApplicationUserId = applicationUserId;
             institutionTeacher.InstitutionId = institutionId;
+            institutionTeacher.EduQualification = model.EducationQualification?.Split(", ").ToList();
+            institutionTeacher.ExamPassYear = model.ExamminationPassYear?.Split(", ").ToList();
+            institutionTeacher.DegreeResult = model.DegreePassResult?.Split(", ").ToList();
             _context.InstitutionTeachers.Add(institutionTeacher);
 
             await _context.SaveChangesAsync();

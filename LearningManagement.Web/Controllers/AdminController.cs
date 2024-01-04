@@ -130,17 +130,30 @@ public class AdminController : Controller
     public async Task<IActionResult> AddTeacher(TeacherModel model)
     {
 
-        if (!ModelState.IsValid) return View(model);
-
-        var addResult = await _authService.AddTeacherWithSignUpAsync(model);
-
-        if (addResult.IsSuccess)
+        try
         {
-            return RedirectToAction("Teacher");
+                model.EduQualification = model.EducationQualification?.Split(", ").ToList();
+                model.ExamPassYear = model.ExamminationPassYear?.Split(", ").ToList();
+                model.DegreeResult = model.DegreePassResult?.Split(", ").ToList();
+            //if (!ModelState.IsValid)
+            //{ 
+            //    return View(model);
+            //} 
+            var addResult = await _authService.AddTeacherWithSignUpAsync(model);
+
+            if (addResult.IsSuccess)
+            {
+                return RedirectToAction("Teacher");
+            }
+            ModelState.AddModelError("LastName", addResult.Errors.First().Message);
+            return View(model);
+        }
+        catch (Exception ex)
+        {
+
+            throw ex;
         }
 
-        ModelState.AddModelError("LastName", addResult.Errors.First().Message);
-        return View(model);
     }
 
     // GET

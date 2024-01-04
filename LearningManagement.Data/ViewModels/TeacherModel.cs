@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LearningManagement.Data.ViewModels;
 
@@ -39,8 +40,36 @@ public class TeacherModel
 
     // Additional properties
     public string? TeacherAddress { get; set; }
-    [Display(Name = "Degree Name, Year, Result")]
-    public string? EduQualification { get; set; }
+    [Display(Name = "Degree Name")]
+    public string? EducationQualification
+    {
+        get => EduQualification != null ? string.Join(", ", EduQualification) : null;
+        set => EduQualification = value?.Split(", ").ToList();
+    }
+    [NotMapped]
+    //[Display(Name = "Degree Name")]
+    public List<string>? EduQualification { get; set; }
+
+    [Display(Name = "ExamPass Year")]
+    public string? ExamminationPassYear
+    {
+        get => ExamPassYear != null ? string.Join(", ", ExamPassYear) : null;
+        set => ExamPassYear = value?.Split(", ").ToList();
+    }
+
+    [NotMapped]
+    //[Display(Name = "Degree Year")]
+    public List<string>? ExamPassYear { get; set; }
+
+    [Display(Name = "Degree Result")]
+    public string? DegreePassResult
+    {
+        get => DegreeResult != null ? string.Join(", ", DegreeResult) : null;
+        set => DegreeResult = value?.Split(", ").ToList();
+    }
+    [NotMapped]
+    //[Display(Name = "Degree Result")]
+    public List<string>? DegreeResult { get; set; }
     public string Subjects { get; set; }
     [Display(Name = "Is Admin")]
     public bool IsAdmin { get; set; }

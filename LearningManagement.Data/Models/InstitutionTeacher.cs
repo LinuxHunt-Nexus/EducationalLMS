@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using LearningManagement.Data.ViewModels;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LearningManagement.Data.Models;
 
@@ -42,8 +44,37 @@ public class InstitutionTeacher
 
     // Additional properties
     public string? TeacherAddress { get; set; }
-    [Display(Name = "Degree Name, Year, Result")]
-    public string? EduQualification { get; set; }
+    [Display(Name = "Degree Name")]   //"Degree Name, Year, Result"
+    public string? EducationQualification
+    {
+        get => EduQualification != null ? string.Join(", ", EduQualification) : null;
+        set => EduQualification = value?.Split(", ").ToList();
+    }
+    [NotMapped]
+    //[Display(Name = "Degree Name")]
+    public List<string>? EduQualification { get; set; }
+
+    [Display(Name = "ExamPass Year")]
+    public string? ExamminationPassYear
+    {
+        get => ExamPassYear != null ? string.Join(", ", ExamPassYear) : null;
+        set => ExamPassYear = value?.Split(", ").ToList();
+    }
+
+    [NotMapped]
+    //[Display(Name = "Degree Year")]
+    public List<string>? ExamPassYear { get; set; }
+
+    [Display(Name = "Degree Result")]
+    public string? DegreePassResult
+    {
+        get => DegreeResult != null ? string.Join(", ", DegreeResult) : null;
+        set => DegreeResult = value?.Split(", ").ToList();
+    }
+    [NotMapped]
+    //[Display(Name = "Degree Result")]
+    public List<string>? DegreeResult { get; set; }
+
     public string Subjects { get; set; }
     public bool IsAdmin { get; set; }
     public bool IsActive { get; set; }
