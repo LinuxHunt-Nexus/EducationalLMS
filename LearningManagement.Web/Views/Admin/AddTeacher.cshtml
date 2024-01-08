@@ -117,6 +117,7 @@
                 </div>
 
                 <div class="row">
+                    <h5>Additional Qualification</h5>
                     <div class="col-md-2 mt-2 lg-mt-0">
                         <label>Education Qualification</label>
                         <div id="eduQualificationContainer">
@@ -195,22 +196,38 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 mt-2 lg-mt-0">
-                        <label>Years Of Experience</label>
-                        @* <input type="" placeholder="Years Of Experience" asp-for="YearsOfExperience" class="form-control" />
-                        <span asp-validation-for="YearsOfExperience" class="err"></span> *@
+                    <h5>Additional Experience</h5>
+                    <div class="col-md-2 mt-2 lg-mt-0">
+                        <label>Organization Name</label>
+                        <div id="organizationContainer">
+                            <input type="text" name="Organization" placeholder="Organization" class="form-control mb-2" />
+                        </div>
+                        @* <button type="button" id="addQualification" class="mt-2">Add More</button> *@
                     </div>
-                    <div class="col-md-3 mt-2 lg-mt-0">
+
+                    <div class="col-md-2 mt-2 lg-mt-0">
+                        <label>Designation</label>
+                        <div id="designationContainer">
+                            <input type="text" name="Designation" placeholder="Designation" class="form-control mb-2" />
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt-2 lg-mt-0">
+                        <label>Form To Year</label>
+                        <div id="formToYearContainer">
+                            <input type="text" name="FormToYear" placeholder="Form To Year" class="form-control mb-2" />
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt-2 lg-mt-0">
+                        <button type="button" id="addExperience" class="btn btn-sm" style="margin-top: 2.5rem!important;">Add More</button>
+                        <span asp-validation-for="Organization" class="err"></span>
+                        <span asp-validation-for="Designation" class="err"></span>
+                        <span asp-validation-for="FormToYear" class="err"></span>
+                    </div>
+                    <div class="col-md-4 mt-2 lg-mt-0">
                         <label>select photo</label>
                         <input asp-for="ImageFile" type="file" class="form-control" />
                         @* <input asp-for="ImageFile" type="hidden" class="form-control" />*@
                     </div>
-                    @*<div class="col-md-4 mt-2 lg-mt-0">
-                    <label asp-for="UserName" class="control-label"></label>
-                    <label>Previous Institutions</label>
-                    <input type="text" asp-for="PreviousInstitutions" class="form-control" />
-                    <span asp-validation-for="PreviousInstitutions" class="err"></span>
-                    </div> *@
                 </div>
                 <div class="row">
                     <div class="col-md-3 mt-2 lg-mt-0">
@@ -242,8 +259,11 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function () {
-            var maxFields = 3;
-            var clickCount = 0;
+            var maxFields1 = 3;
+            var clickCount1 = 1;
+
+            var maxFields2 = 3;
+            var clickCount2 = 1;
 
             $("#addQualification").on("click", function () {
                 // Check if any existing field is empty
@@ -261,9 +281,11 @@
                     return;
                 }
 
-                if (clickCount < maxFields) {
-                    clickCount++;
+                console.log("Count", clickCount1);
+                if (clickCount1 < maxFields1) {
+                    clickCount1++;
 
+                    //console.log("Count", clickCount);
                     var eduQualificationInput = '<input type="text" name="EduQualification" placeholder="Degree" class="form-control mb-2" />';
                     var educationYearInput = '<input type="text" name="ExamPassYear" placeholder="Pass Year" class="form-control mb-2" />';
                     var educationYearPassResultInput = '<input type="text" name="DegreeResult" placeholder="Result" class="form-control mb-2" />';
@@ -276,6 +298,39 @@
                 } else {
                     alert("You can't add more than three fields.");
                     $("#addQualification").prop("disabled", true); // Disable the button after the limit is reached
+                }
+            });
+
+            $("#addExperience").on("click", function () {
+                // Check if any existing field is empty
+                var areAnyFieldsEmpty = false;
+
+                $("input[name='Organization'], input[name='Designation'], input[name='FormToYear']").each(function () {
+                    if ($(this).val().trim() === "") {
+                        areAnyFieldsEmpty = true;
+                        return false; // Exit the loop if any field is empty
+                    }
+                });
+
+                if (areAnyFieldsEmpty) {
+                    alert("Please fill all existing fields before adding more.");
+                    return;
+                }
+
+                if (clickCount2 < maxFields2) {
+                    clickCount2++;
+
+                    var organizationInput = '<input type="text" name="Organization" placeholder="Organization" class="form-control mb-2" />';
+                    var designationInput = '<input type="text" name="Designation" placeholder="Designation" class="form-control mb-2" />';
+                    var formToYearInput = '<input type="text" name="FormToYear" placeholder="Form To Year" class="form-control mb-2" />';
+                    //var institutionNameContainertInput = '<input type="text" name="InstitutionName" placeholder="Institution Name" class="form-control mb-2" />';
+
+                    $("#organizationContainer").append(organizationInput);
+                    $("#designationContainer").append(designationInput);
+                    $("#formToYearContainer").append(formToYearInput);
+                } else {
+                    alert("You can't add more than three fields.");
+                    $("#addExperience").prop("disabled", true); // Disable the button after the limit is reached
                 }
             });
         });
