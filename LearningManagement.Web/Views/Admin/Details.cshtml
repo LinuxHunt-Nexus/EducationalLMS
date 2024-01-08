@@ -27,7 +27,6 @@
                     <dl class="row">
                         <!-- Personal Information -->
                         <div class="col-sm-6">
-                            <h4>Personal Information</h4>
                             @if (!string.IsNullOrEmpty(Model?.ImageFileName))
                             {
                                 <img src="~/Images/@(string.IsNullOrEmpty(Model.ImageFileName) ? "default-image.png" : Model.ImageFileName)" alt="" class="img-fluid table-image" style="height:150; width:150;" />
@@ -37,6 +36,8 @@
                                 <span>No image available</span>
                             }
                             <br />
+                            <br />
+                            <h4>Personal Information</h4>
                             <span>Full Name:</span>
                             <span>@Html.DisplayFor(model => model.FirstName) </span>
                             <span>@Html.DisplayFor(model => model.LastName)</span>
@@ -147,7 +148,7 @@
                                 var degrees = Model.OrganizationSet.Split(',').Select(degree => degree.Trim()).ToArray();
                                 var passYears = Model.DesignationSet.Split(',').Select(year => year.Trim()).ToArray();
                                 var gpas = Model.FormToYearSet.Split(',').Select(gpa => gpa.Trim()).ToArray();
-                                <span><b><u>Years Of Experience:</u></b</span>
+                                <span><b><u>Experience:</u></b</span>
                                 <table style="border-collapse: collapse; width: 100%; margin-top: 10px;">
                                     <thead>
                                         <tr>
@@ -160,9 +161,9 @@
                                         @for (int i = 0; i < degrees.Length && i < passYears.Length && i < gpas.Length; i++)
                                         {
                                             <tr>
-                                                <td style="padding: 10px;">@degrees[i]</td>
-                                                <td style="padding: 10px;">@passYears[i]</td>
-                                                <td style="padding: 10px;">@gpas[i]</td>
+                                                <td style="padding: 10px; font-weight:normal!important;">@degrees[i]</td>
+                                                <td style="padding: 10px; font-weight:normal!important;">@passYears[i]</td>
+                                                <td style="padding: 10px; font-weight:normal!important;">@gpas[i]</td>
                                             </tr>
                                         }
                                     </tbody>
@@ -181,7 +182,7 @@
                                 var passYears = Model.ExamminationPassYear.Split(',').Select(year => year.Trim()).ToArray();
                                 var gpas = Model.DegreePassResult.Split(',').Select(gpa => gpa.Trim()).ToArray();
                                 var iSet = Model.InstitutionSet.Split(',').Select(si => si.Trim()).ToArray();
-                                <span><b><u>Additional Information</u></b></span>
+                                <span><b><u>Additional Qualification</u></b></span>
                                 <table style="border-collapse: collapse; width: 100%; margin-top: 10px;">
                                     <thead>
                                         <tr>
@@ -195,10 +196,10 @@
                                         @for (int i = 0; i < degrees.Length && i < passYears.Length && i < gpas.Length && i < iSet.Length; i++)
                                         {
                                             <tr>
-                                                <td style="padding: 10px;">@iSet[i]</td>
-                                                <td style="padding: 10px;">@degrees[i]</td>
-                                                <td style="padding: 10px;">@passYears[i]</td>
-                                                <td style="padding: 10px;">@gpas[i]</td>
+                                                <td style="padding: 10px; font-weight:normal!important;">@iSet[i]</td>
+                                                <td style="padding: 10px; font-weight:normal!important;">@degrees[i]</td>
+                                                <td style="padding: 10px; font-weight:normal!important;">@passYears[i]</td>
+                                                <td style="padding: 10px; font-weight:normal!important;">@gpas[i]</td>
                                             </tr>
                                         }
                                     </tbody>

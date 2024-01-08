@@ -99,61 +99,28 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4 mt-2 lg-mt-0">
+                    <div class="col-md-3 mt-2 lg-mt-0">
                         <label>University</label>
                         <input type="" placeholder="University" asp-for="University" class="form-control" />
                         <span asp-validation-for="University" class="err"></span>
                     </div>
-                    <div class="col-md-4 mt-2 lg-mt-0">
+                    <div class="col-md-3 mt-2 lg-mt-0">
                         <label>Graduation Year</label>
                         <input type="text" placeholder="GraduationYear" asp-for="GraduationYear" class="form-control" />
                         <span asp-validation-for="GraduationYear" class="err"></span>
                     </div>
-                    <div class="col-md-4 mt-2 lg-mt-0">
+                    <div class="col-md-3 mt-2 lg-mt-0">
                         <label>Previous Institutions</label>
                         <input type="text" placeholder="Previous Institutions" asp-for="PreviousInstitutions" class="form-control" />
                         <span asp-validation-for="PreviousInstitutions" class="err"></span>
                     </div>
-                </div>
-
-                <div class="row">
-                    <h5>Additional Qualification</h5>
-                    <div class="col-md-2 mt-2 lg-mt-0">
-                        <label>Education Qualification</label>
-                        <div id="eduQualificationContainer">
-                            <input type="text" name="EduQualification" placeholder="Degree" class="form-control mb-2" />
-                        </div>
-                        @* <button type="button" id="addQualification" class="mt-2">Add More</button> *@
-                    </div>
-
-                    <div class="col-md-2 mt-2 lg-mt-0">
-                        <label>Education Year</label>
-                        <div id="educationYearContainer">
-                            <input type="text" name="ExamPassYear" placeholder="Pass Year" class="form-control mb-2" />
-                        </div>
-                    </div>
-                    <div class="col-md-2 mt-2 lg-mt-0">
-                        <label>Degree Result</label>
-                        <div id="educationResultContainer">
-                            <input type="text" name="DegreeResult" placeholder="Result" class="form-control mb-2" />
-                        </div>
-                    </div>
-                    <div class="col-md-4 mt-2 lg-mt-0">
-                        <label>Institution Name</label>
-                        <div id="institutionNameContainer">
-                        <input type="text" placeholder="Institution Name" name="InstitutionName" class="form-control mb-2" />
-                        </div>
-                    </div>
-                    <div class="col-md-2 mt-2 lg-mt-0">
-                        <button type="button" id="addQualification" class="btn btn-sm" style="margin-top: 2.5rem!important;">Add More</button>
-                        <span asp-validation-for="EduQualification" class="err"></span> 
-                        <span asp-validation-for="ExamPassYear" class="err"></span>
-                        <span asp-validation-for="DegreeResult" class="err"></span>
-                        <span asp-validation-for="InstitutionName" class="err"></span>
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>select photo</label>
+                        <input asp-for="ImageFile" type="file" class="form-control" />
+                        @* <input asp-for="ImageFile" type="hidden" class="form-control" />*@
                     </div>
                 </div>
                 <!--MAHADI-->
-
                 <div class="row">
                     <div class="col-md-3 mt-2 lg-mt-0">
                         <label>Join date</label>
@@ -195,40 +162,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
-                    <h5>Additional Experience</h5>
-                    <div class="col-md-2 mt-2 lg-mt-0">
-                        <label>Organization Name</label>
-                        <div id="organizationContainer">
-                            <input type="text" name="Organization" placeholder="Organization" class="form-control mb-2" />
-                        </div>
-                        @* <button type="button" id="addQualification" class="mt-2">Add More</button> *@
-                    </div>
 
-                    <div class="col-md-2 mt-2 lg-mt-0">
-                        <label>Designation</label>
-                        <div id="designationContainer">
-                            <input type="text" name="Designation" placeholder="Designation" class="form-control mb-2" />
-                        </div>
-                    </div>
-                    <div class="col-md-2 mt-2 lg-mt-0">
-                        <label>Form To Year</label>
-                        <div id="formToYearContainer">
-                            <input type="text" name="FormToYear" placeholder="Form To Year" class="form-control mb-2" />
-                        </div>
-                    </div>
-                    <div class="col-md-2 mt-2 lg-mt-0">
-                        <button type="button" id="addExperience" class="btn btn-sm" style="margin-top: 2.5rem!important;">Add More</button>
-                        <span asp-validation-for="Organization" class="err"></span>
-                        <span asp-validation-for="Designation" class="err"></span>
-                        <span asp-validation-for="FormToYear" class="err"></span>
-                    </div>
-                    <div class="col-md-4 mt-2 lg-mt-0">
-                        <label>select photo</label>
-                        <input asp-for="ImageFile" type="file" class="form-control" />
-                        @* <input asp-for="ImageFile" type="hidden" class="form-control" />*@
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-md-3 mt-2 lg-mt-0">
                         <label class="form-check-label">
@@ -246,7 +180,84 @@
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="mt-3 btn">add</button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn" data-bs-toggle="collapse" data-bs-target="#content" style="width: 100%!important; background-color: #384A59;">Additional Information<i class="fa fa-chevron-down" style="float:right!important;"></i></button>
+                    </div>
+                </div>
+
+                <div class="row collapse" id="content">
+                    <h5>Additional Qualification</h5>
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>Education Qualification</label>
+                        <div id="eduQualificationContainer">
+                            <input type="text" name="EduQualification" placeholder="Degree" class="form-control mb-2" />
+                        </div>
+                        @* <button type="button" id="addQualification" class="mt-2">Add More</button> *@
+                    </div>
+
+                    <div class="col-md-2 mt-2 lg-mt-0">
+                        <label>Education Year</label>
+                        <div id="educationYearContainer">
+                            <input type="text" name="ExamPassYear" placeholder="Pass Year" class="form-control mb-2" />
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt-2 lg-mt-0">
+                        <label>Degree Result</label>
+                        <div id="educationResultContainer">
+                            <input type="text" name="DegreeResult" placeholder="Result" class="form-control mb-2" />
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>Institution Name</label>
+                        <div id="institutionNameContainer">
+                        <input type="text" placeholder="Institution Name" name="InstitutionName" class="form-control mb-2" />
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt-2 lg-mt-0">
+                        <button type="button" id="addQualification" class="btn btn-sm" style="margin-top: 2.5rem!important; width:100%!important; background-color:#384A59!important;
+">
+                            Add More
+                        </button>
+                        <span asp-validation-for="EduQualification" class="err"></span> 
+                        <span asp-validation-for="ExamPassYear" class="err"></span>
+                        <span asp-validation-for="DegreeResult" class="err"></span>
+                        <span asp-validation-for="InstitutionName" class="err"></span>
+                    </div>
+                </div>
+                <hr />
+                <div class="row collapse" id="content">
+                    <h5>Additional Experience</h5>
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>Organization Name</label>
+                        <div id="organizationContainer">
+                            <input type="text" name="Organization" placeholder="Organization" class="form-control mb-2" />
+                        </div>
+                        @* <button type="button" id="addQualification" class="mt-2">Add More</button> *@
+                    </div>
+
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>Designation</label>
+                        <div id="designationContainer">
+                            <input type="text" name="Designation" placeholder="Designation" class="form-control mb-2" />
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <label>Form To Year</label>
+                        <div id="formToYearContainer">
+                            <input type="text" name="FormToYear" placeholder="Form To Year" class="form-control mb-2" />
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-2 lg-mt-0">
+                        <button type="button" id="addExperience" class="btn btn-sm" style="margin-top: 2.5rem!important; width:100%!important; background-color:#384A59!important;">Add More</button>
+                        <span asp-validation-for="Organization" class="err"></span>
+                        <span asp-validation-for="Designation" class="err"></span>
+                        <span asp-validation-for="FormToYear" class="err"></span>
+                    </div>
+                    
+                </div>
+                
+                <button type="submit" class="mt-3 btn" style="float:right;">Submit</button>
             </form>
             <!-- end section main form -->
         </div>
