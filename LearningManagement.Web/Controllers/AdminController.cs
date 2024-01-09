@@ -249,7 +249,7 @@ public class AdminController : Controller
 
         var addResult = await _institutionService.UpdateInstitutionInfoAsync(model);
 
-        if (addResult.IsSuccess)
+        if (addResult != null && addResult.IsSuccess)
         {
             await  _notificationHelper.NotifyAsync(message:"Update Successfully");
             return View(addResult.Value);

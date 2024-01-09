@@ -67,6 +67,21 @@ public class InstitutionRepository : BaseRepository<Institution>, IInstitutionRe
             institution.Website = model.Website;
             institution.BrandingTagLine = model.BrandingTagLine;
             institution.Address = model.Address;
+            institution.FoundedDate = model.FoundedDate;
+            institution.Founder = model.Founder;
+            institution.MissionStatement = model.MissionStatement;
+            institution.VisionStatement = model.VisionStatement;
+            institution.Accreditation = model.Accreditation;
+            institution.Affiliation = model.Affiliation;
+            institution.TotalStudents = model.TotalStudents;
+            institution.TotalTeachers = model.TotalTeachers;
+            institution.TotalCourses = model.TotalCourses;
+            institution.CampusFacilities = model.CampusFacilities;
+            institution.SocialMediaLinks = model.SocialMediaLinks;
+            institution.AdmissionProcedure = model.AdmissionProcedure;
+            institution.PrincipalName = model.PrincipalName;
+            institution.PrincipalEmail = model.PrincipalEmail;
+            institution.PrincipalPhone  = model.PrincipalPhone;
 
 
             _context.Institutions.Update(institution);

@@ -4,6 +4,7 @@ using LearningManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearningManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240109090549_AddedPropertyInstitution")]
+    partial class AddedPropertyInstitution
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,13 +96,13 @@ namespace LearningManagement.Data.Migrations
                     b.Property<string>("SocialMediaLinks")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TotalCourses")
+                    b.Property<int>("TotalCourses")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TotalStudents")
+                    b.Property<int>("TotalStudents")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TotalTeachers")
+                    b.Property<int>("TotalTeachers")
                         .HasColumnType("int");
 
                     b.Property<string>("VisionStatement")
@@ -122,21 +125,6 @@ namespace LearningManagement.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AcademicSessionId"));
 
-                    b.Property<string>("AcademicCalendar")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Achievements")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("AverageStudentAttendance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("AverageStudentPerformance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ChallengesFaced")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedAtUtc")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
@@ -145,35 +133,20 @@ namespace LearningManagement.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("date");
 
-                    b.Property<string>("FutureGoals")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("InstitutionId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("SessionDescription")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("SessionDirector")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SessionName")
                         .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<DateTime?>("SessionTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("date");
-
-                    b.Property<int?>("TotalStudentsEnrolled")
-                        .HasColumnType("int");
 
                     b.HasKey("AcademicSessionId");
 
@@ -274,9 +247,9 @@ namespace LearningManagement.Data.Migrations
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "APPADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA7S5Z/5LECmYaNIKAAeMxTeYDHAYJ12z8dAodCthi7gdg9RUMihSLDrId1ZnoJq8A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHCS+3SdqzaOH0xUo2UYf/hSwc1nqBt1CaJ1MwgJLamHi2JCh/qBd5q0z0hf9D2MhQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6b7d54a4-71f4-46d2-9913-9c3bd53e4141",
+                            SecurityStamp = "2e251cec-94a5-4ddc-a4c4-a74210914312",
                             TwoFactorEnabled = false,
                             UserName = "AppAdmin",
                             UserType = "AppAdmin"
@@ -336,9 +309,6 @@ namespace LearningManagement.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InstitutionClassId"));
 
-                    b.Property<int?>("AcademicSessionId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ClassName")
                         .IsRequired()
                         .HasMaxLength(128)
@@ -354,8 +324,6 @@ namespace LearningManagement.Data.Migrations
 
                     b.HasKey("InstitutionClassId");
 
-                    b.HasIndex("AcademicSessionId");
-
                     b.HasIndex("InstitutionId");
 
                     b.ToTable("InstitutionClass", (string)null);
@@ -368,9 +336,6 @@ namespace LearningManagement.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InstitutionCourseId"));
-
-                    b.Property<int?>("AcademicSessionId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CourseName")
                         .IsRequired()
@@ -394,8 +359,6 @@ namespace LearningManagement.Data.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.HasKey("InstitutionCourseId");
-
-                    b.HasIndex("AcademicSessionId");
 
                     b.HasIndex("InstitutionId");
 
@@ -968,10 +931,6 @@ namespace LearningManagement.Data.Migrations
 
             modelBuilder.Entity("LearningManagement.Data.Models.InstitutionClass", b =>
                 {
-                    b.HasOne("LearningManagement.Data.Models.AcademicSession", null)
-                        .WithMany("OfferedClasses")
-                        .HasForeignKey("AcademicSessionId");
-
                     b.HasOne("LearningManagement.Data.Institution", "Institution")
                         .WithMany("InstitutionClasses")
                         .HasForeignKey("InstitutionId")
@@ -983,10 +942,6 @@ namespace LearningManagement.Data.Migrations
 
             modelBuilder.Entity("LearningManagement.Data.Models.InstitutionCourse", b =>
                 {
-                    b.HasOne("LearningManagement.Data.Models.AcademicSession", null)
-                        .WithMany("OfferedCourses")
-                        .HasForeignKey("AcademicSessionId");
-
                     b.HasOne("LearningManagement.Data.Institution", "Institution")
                         .WithMany("InstitutionCourses")
                         .HasForeignKey("InstitutionId")
@@ -1216,10 +1171,6 @@ namespace LearningManagement.Data.Migrations
 
             modelBuilder.Entity("LearningManagement.Data.Models.AcademicSession", b =>
                 {
-                    b.Navigation("OfferedClasses");
-
-                    b.Navigation("OfferedCourses");
-
                     b.Navigation("StudentInClasses");
                 });
 

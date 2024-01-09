@@ -4,6 +4,7 @@ using LearningManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearningManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240109095927_AddedPropertyAcademicSession")]
+    partial class AddedPropertyAcademicSession
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,13 +96,13 @@ namespace LearningManagement.Data.Migrations
                     b.Property<string>("SocialMediaLinks")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TotalCourses")
+                    b.Property<int>("TotalCourses")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TotalStudents")
+                    b.Property<int>("TotalStudents")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TotalTeachers")
+                    b.Property<int>("TotalTeachers")
                         .HasColumnType("int");
 
                     b.Property<string>("VisionStatement")
@@ -274,9 +277,9 @@ namespace LearningManagement.Data.Migrations
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "APPADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA7S5Z/5LECmYaNIKAAeMxTeYDHAYJ12z8dAodCthi7gdg9RUMihSLDrId1ZnoJq8A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFbOlivwWvpRmqNdRbSaG4Cj/pB+Ve50l/jArefeSKN01KjGcyqA4DI5Ow3TJvHvhg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6b7d54a4-71f4-46d2-9913-9c3bd53e4141",
+                            SecurityStamp = "dff1dd3b-5bc1-4f10-a02c-1da256f74b10",
                             TwoFactorEnabled = false,
                             UserName = "AppAdmin",
                             UserType = "AppAdmin"

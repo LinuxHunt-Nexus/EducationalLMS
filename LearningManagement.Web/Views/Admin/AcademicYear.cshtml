@@ -46,8 +46,40 @@
 
                     <label class="py-2">Session Description</label>
                     <textarea placeholder="Session Description" required class="form-control" x-model="formSession.SessionDescription"></textarea>
+                    <!--MAHADI-->
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <label class="py-2">Session Director</label>
+                            <input id="inputSessionDirector" type="text" placeholder="Session Director" class="form-control" x-model="formSession.SessionDirector" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="py-2">Session Time</label>
+                            <input id="inputSessionTime" type="text" placeholder="Session Time Start" class="form-control" x-model="formSession.SessionTime" />
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <label class="py-2">Total Students Enrolled</label>
+                            <input id="inputTotalStudentsEnrolled" type="text" placeholder="Total Students Enrolled" class="form-control" x-model="formSession.TotalStudentsEnrolled" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="py-2">Average Student Attendance</label>
+                            <input id="inputAverageStudentAttendance" type="text" placeholder="Average Student Attendance" class="form-control" x-model="formSession.AverageStudentAttendance" />
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <label class="py-2">Achievements</label>
+                            <input id="inputAchievements" type="text" placeholder="Achievements" class="form-control" x-model="formSession.Achievements" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="py-2">Future Goals</label>
+                            <input id="inputFutureGoals" type="text" placeholder="Future Goals" class="form-control" x-model="formSession.FutureGoals" />
+                        </div>
+                    </div>
+                    <!--MAHADI-->
 
-                    <button type="submit" class="btn mt-3 mb-5">add</button>
+                    <button type="submit" class="btn mt-3 mb-5" style="float:right!important;">Submit</button>
                 </form>
             </div>
 
