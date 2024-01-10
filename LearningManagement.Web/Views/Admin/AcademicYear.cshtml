@@ -50,33 +50,33 @@
                     <div class="row py-2">
                         <div class="col-md-6">
                             <label class="py-2">Session Director</label>
-                            <input id="inputSessionDirector" type="text" placeholder="Session Director" class="form-control" x-model="formSession.SessionDirector" />
+                            <input type="text" placeholder="Session Director" class="form-control" x-model="formSession.SessionDirector" />
                         </div>
                         <div class="col-md-6">
-                            <label class="py-2">Session Time</label>
-                            <input id="inputSessionTime" type="text" placeholder="Session Time Start" class="form-control" x-model="formSession.SessionTime" />
+                            <label class="py-2">Student Performance</label>
+                            <input type="number" placeholder="Student Performance" class="form-control" x-model="formSession.AverageStudentPerformance" />
                         </div>
                     </div>
                     <div class="row py-2">
                         <div class="col-md-6">
                             <label class="py-2">Total Students Enrolled</label>
-                            <input id="inputTotalStudentsEnrolled" type="text" placeholder="Total Students Enrolled" class="form-control" x-model="formSession.TotalStudentsEnrolled" />
+                            <input type="number" placeholder="Total Students Enrolled" class="form-control" x-model="formSession.TotalStudentsEnrolled" />
                         </div>
                         <div class="col-md-6">
                             <label class="py-2">Average Student Attendance</label>
-                            <input id="inputAverageStudentAttendance" type="text" placeholder="Average Student Attendance" class="form-control" x-model="formSession.AverageStudentAttendance" />
+                            <input type="number" placeholder="Average Student Attendance" class="form-control" x-model="formSession.AverageStudentAttendance" />
                         </div>
                     </div>
                     <div class="row py-2">
                         <div class="col-md-6">
                             <label class="py-2">Achievements</label>
-                            <input id="inputAchievements" type="text" placeholder="Achievements" class="form-control" x-model="formSession.Achievements" />
+                            <input type="text" placeholder="Achievements" class="form-control" x-model="formSession.Achievements" />
                         </div>
                         <div class="col-md-6">
                             <label class="py-2">Future Goals</label>
-                            <input id="inputFutureGoals" type="text" placeholder="Future Goals" class="form-control" x-model="formSession.FutureGoals" />
+                            <input type="text" placeholder="Future Goals" class="form-control" x-model="formSession.FutureGoals" />
                         </div>
-                    </div>
+                    </div> 
                     <!--MAHADI-->
 
                     <button type="submit" class="btn mt-3 mb-5" style="float:right!important;">Submit</button>
@@ -133,6 +133,7 @@
         function initializeData() {
             const inputStartDate = document.getElementById("inputStartDate");
             const inputEndDate = document.getElementById("inputEndDate");
+            //const inputTime = document.getElementById("inputSessionTime");
 
             const dateOptions = {
                 altInput: true,
@@ -148,23 +149,45 @@
                     SessionName: '',
                     StartDate: '',
                     EndDate: '',
-                    SessionDescription: ''
+                    SessionDescription: '',
+                    SessionDirector: '',
+                    AverageStudentPerformance: '',
+                    TotalStudentsEnrolled: '',
+                    AverageStudentAttendance: '',
+                    Achievements: '',
+                    FutureGoals: '',
                 },
 
                 // add year
                 async addYearSubmit() {
                     const url = '@Url.Action("AcademicYear","Admin")';
-                    const { SessionName, StartDate, EndDate, SessionDescription } = this.formSession;
+                    const { SessionName, 
+                        StartDate,
+                        EndDate, 
+                        SessionDescription, 
+                        SessionDirector,
+                        AverageStudentPerformance,
+                        TotalStudentsEnrolled, 
+                        AverageStudentAttendance, 
+                        Achievements, 
+                        FutureGoals 
+                    } = this.formSession;
                    
 
                     const formData = {
                         SessionName,
                         StartDate: StartDate,
                         EndDate: EndDate,
-                        SessionDescription
+                        SessionDescription,
+                        SessionDirector,
+                        AverageStudentPerformance,
+                        TotalStudentsEnrolled,
+                        AverageStudentAttendance,
+                        Achievements,
+                        FutureGoals,
                     };
 
-
+                    //console.log(JSON.stringify(formData));
                     try {
                         const response = await fetch(url, {
                             method: 'POST',
@@ -187,6 +210,7 @@
                         this.formSession = {};
                         inputStartDate._flatpickr.clear();
                         inputEndDate._flatpickr.clear();
+                        //inputTime._flatpickr.clear();
 
                         // get new data
                         this.getYears();
@@ -216,7 +240,7 @@
                         this.sessionData = responseData.map(item => ({
                             ...item,
                             startDate: moment(item.startDate).format('DD MMM, YYYY'),
-                            endDate: moment(item.endDate).format('DD MMM, YYYY'),
+                            endDate: moment(item.endDate).format('DD MMM, YYYY')
                         }));
 
                     } catch (error) {

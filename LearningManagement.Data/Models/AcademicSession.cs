@@ -18,8 +18,6 @@ public class AcademicSession
     // Additional properties
     public bool IsActive { get; set; }
     public string? AcademicCalendar { get; set; }
-    public virtual ICollection<InstitutionClass> OfferedClasses { get; set; } = new HashSet<InstitutionClass>();  // List of classes offered during the academic session.
-    public virtual ICollection<InstitutionCourse> OfferedCourses { get; set; } = new HashSet<InstitutionCourse>();  // List of courses offered during the academic session.
     public string? SessionDirector { get; set; }
     public DateTime? SessionTime { get; set; }
     public int? TotalStudentsEnrolled { get; set; }

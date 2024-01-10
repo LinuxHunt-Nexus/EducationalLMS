@@ -44,13 +44,24 @@ public class AdminController : Controller
     [HttpPost]
     public async Task<IActionResult> AcademicYear([FromBody] AcademicSessionModel model)
     {
-        if (model == null) return StatusCode(StatusCodes.Status400BadRequest, new ResponseModel { Message = "Invalid data" });
+        try
+        {
+            if (model == null) 
+            return StatusCode(StatusCodes.Status400BadRequest, new ResponseModel { Message = "Invalid data" });
 
-        var addResult = await _academicSessionService.AcademicSessionAddAsync(model);
+            var addResult = await _academicSessionService.AcademicSessionAddAsync(model).ConfigureAwait(false);
 
-        if (addResult.IsSuccess) return StatusCode(StatusCodes.Status201Created);
+            if (addResult.IsSuccess) 
+            return StatusCode(StatusCodes.Status201Created);
 
-        return StatusCode(StatusCodes.Status400BadRequest, addResult.Errors[0]);
+            return StatusCode(StatusCodes.Status400BadRequest, addResult.Errors[0]);
+
+        }
+        catch (Exception ex)
+        {
+
+            throw ex;
+        }
     }
 
 

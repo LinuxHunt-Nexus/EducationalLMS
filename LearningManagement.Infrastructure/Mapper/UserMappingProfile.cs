@@ -15,5 +15,6 @@ public class UserMappingProfile : Profile
 
         CreateMap<InstitutionStudent, StudentModel>().ReverseMap();
         CreateMap<InstitutionTeacher, TeacherModel>().ReverseMap();
+        CreateMap<AcademicSessionModel, AcademicSession>().ReverseMap();
     }
 }

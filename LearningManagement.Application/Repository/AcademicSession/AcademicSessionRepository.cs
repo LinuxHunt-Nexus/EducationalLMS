@@ -26,6 +26,18 @@ public class AcademicSessionRepository:BaseRepository<AcademicSession>,IAcademic
 
             var academicSession = _mapper.Map<AcademicSession>(model);
             academicSession.InstitutionId = institutionId;
+            //academicSession.AverageStudentAttendance = model.AverageStudentAttendance;
+            //academicSession.AcademicCalendar = model.AcademicCalendar;
+            //academicSession.IsActive = model.IsActive;
+            //academicSession.SessionDirector = model.SessionDirector;
+            //academicSession.SessionTime = model.SessionTime;
+            //academicSession.TotalStudentsEnrolled = model.TotalStudentsEnrolled;
+            //academicSession.AverageStudentAttendance = model.AverageStudentAttendance;
+            //academicSession.AverageStudentPerformance = model.AverageStudentPerformance;
+            //academicSession.Achievements = model.Achievements;
+            //academicSession.ChallengesFaced = model.ChallengesFaced;
+            //academicSession.FutureGoals = model.FutureGoals;
+
             _context.AcademicSessions.Add(academicSession);
            
             await _context.SaveChangesAsync();
