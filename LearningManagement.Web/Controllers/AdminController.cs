@@ -238,7 +238,11 @@ public class AdminController : Controller
         await _notificationHelper.NotifyAsync(NotificationType.Error, addResult.Errors.First().Message);
         return View(model);
     }
-
+    public async Task<IActionResult> InstitutionList()
+    {
+        var institueList = await _institutionService.InstitutionListAsync();
+        return View(institueList.Value);
+    }
     public async Task<IActionResult> InstitutionInfo()
     {
 
@@ -246,6 +250,17 @@ public class AdminController : Controller
 
         var model = new InstitutionViewModel();
         var institutionInfo = await _institutionService.GetInstitutionInfoAsync();
+
+        if (institutionInfo.IsSuccess) model = institutionInfo.Value;
+        return View(model);
+    }
+    public async Task<IActionResult> InstitutionEdit(InstitutionViewModel id)
+    {
+
+        //await  _notificationHelper.NotifyAsync();
+
+        //var model = new InstitutionViewModel();
+        var institutionInfo = await _institutionService.UpdateInstitutionInfoAsync(id);
 
         if (institutionInfo.IsSuccess) model = institutionInfo.Value;
         return View(model);

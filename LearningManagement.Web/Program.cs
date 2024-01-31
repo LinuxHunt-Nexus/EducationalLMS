@@ -7,6 +7,7 @@ using LearningManagement.Infrastructure.Mapper;
 using LearningManagement.Web.Helper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace LearningManagement.Web
@@ -91,6 +92,11 @@ namespace LearningManagement.Web
             builder.Services.AddScoped<IFileStorageHelper, LocalStorageHelper>();
 
             builder.Services.AddScoped<NotificationHelper>();
+
+            builder.Services.Configure<KestrelServerOptions>(options =>
+            {
+                options.Limits.MaxRequestHeadersTotalSize = 524288; // Adjust the size as needed
+            });
 
 
             builder.Services.AddHttpContextAccessor();
