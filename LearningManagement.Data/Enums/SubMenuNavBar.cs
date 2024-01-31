@@ -4,6 +4,7 @@ public enum SubMenuNavBar
 {
     AdminIndex,
     InstitutionInfo,
+    InstitutionList,
     AcademicYear,
     AddClass,
 
