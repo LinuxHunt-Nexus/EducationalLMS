@@ -16,6 +16,23 @@ public class InstitutionRepository : BaseRepository<Institution>, IInstitutionRe
 
     }
 
+    public async Task<Result<Institution>> CreateInstitutionInfoAsync(InstitutionViewModel model)
+    {
+        try
+        {
+            var createInstitution = await _context.AddAsync(_mapper.Map<Institution>(model));
+            var institution = _mapper.Map<Institution>(createInstitution.Entity);
+            await _context.SaveChangesAsync();
+            return Result.Ok(institution);
+        }
+        catch (Exception ex)
+        {
+            return Result.Fail<Institution>(ex.Message);
+        }
+    }
+
+
+
     public async Task<Result<InstitutionViewModel>> GetInstitutionInfoAsync(int institutionId)
     {
         try

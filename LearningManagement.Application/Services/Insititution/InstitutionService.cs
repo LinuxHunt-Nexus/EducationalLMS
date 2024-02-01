@@ -1,5 +1,6 @@
 ﻿using FluentResults;
 using LearningManagement.Application.Repository;
+using LearningManagement.Data;
 using LearningManagement.Data.Enums;
 using LearningManagement.Data.Models;
 using LearningManagement.Data.ViewModels;
@@ -23,6 +24,21 @@ public class InstitutionService : IInstitutionService
         _applicationUserRepository = applicationUserRepository;
         _fileStorageHelper = fileStorageHelper;
         _institutionRepository = institutionRepository;
+    }
+
+    public async Task<Result<Institution>> CreateInstitutionInfoAsync(InstitutionViewModel model)
+    {
+        try
+        {
+            var createInstitution = await _institutionRepository.CreateInstitutionInfoAsync(model);
+            return createInstitution;
+        }
+        catch (Exception ex)
+        {
+
+            throw ex;
+        }
+
     }
 
     public async Task<Result<InstitutionViewModel>> GetInstitutionInfoAsync()

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LearningManagement.Data.ViewModels;
 using LearningManagement.Data.Models;
+using LearningManagement.Data;
 
 namespace LearningManagement.Infrastructure.Mapper;
 
@@ -16,5 +17,8 @@ public class UserMappingProfile : Profile
         CreateMap<InstitutionStudent, StudentModel>().ReverseMap();
         CreateMap<InstitutionTeacher, TeacherModel>().ReverseMap();
         CreateMap<AcademicSessionModel, AcademicSession>().ReverseMap();
+        CreateMap<Institution, InstitutionViewModel>();
+        CreateMap<InstitutionViewModel, Institution>();
+
     }
 }

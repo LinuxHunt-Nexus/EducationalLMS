@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Build.Framework;
+using Microsoft.EntityFrameworkCore;
 
 namespace LearningManagement.Web.Controllers;
 
@@ -254,17 +256,35 @@ public class AdminController : Controller
         if (institutionInfo.IsSuccess) model = institutionInfo.Value;
         return View(model);
     }
-    public async Task<IActionResult> InstitutionEdit(InstitutionViewModel id)
+    [HttpGet]
+    public async Task<IActionResult> CreateInstitutionInfo()
     {
+        
+        return View();
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> CreateInstitutionInfo(InstitutionViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            // If ModelState is not valid, return to the view with validation errors
+            return View(model);
+        }
 
-        //await  _notificationHelper.NotifyAsync();
+        var createInstitution = await _institutionService.CreateInstitutionInfoAsync(model);
 
-        //var model = new InstitutionViewModel();
-        var institutionInfo = await _institutionService.UpdateInstitutionInfoAsync(id);
+        if (createInstitution != null && createInstitution.IsSuccess)
+        {
+            await _notificationHelper.NotifyAsync(message: "Created Successfully");
+            // return View(createInstitution.Value);
+            return RedirectToAction(nameof(InstitutionList));
+        }
 
-        if (institutionInfo.IsSuccess) model = institutionInfo.Value;
+        await _notificationHelper.NotifyAsync(NotificationType.Error, createInstitution.Errors.First().Message);
         return View(model);
     }
+
 
     // Post
     [HttpPost]
