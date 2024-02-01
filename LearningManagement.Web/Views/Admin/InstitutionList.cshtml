@@ -13,56 +13,56 @@
         <partial name='_AdminSubMenuPartial' />
     </div>
     <div class="col-md-12 col-lg-10">
-            <table class="table">
-                <thead>
+        <table class="table">
+            <thead>
+                <tr>
+                    @* <th>ID</th> *@
+                    <th>Institute Name</th>
+                    <th>Logo Image</th>
+                    <th>Contact Number</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                    <th>Branding Tag Line</th>
+                    <th>Address</th>
+                    <!-- Add other headers as needed -->
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var institution in Model)
+                {
                     <tr>
-                        @* <th>ID</th> *@
-                        <th>Institute Name</th>
-                        <th>Logo Image</th>
-                        <th>Contact Number</th>
-                        <th>Email</th>
-                        <th>Website</th>
-                        <th>Branding Tag Line</th>
-                        <th>Address</th>
-                        <!-- Add other headers as needed -->
-                        <th>Operations</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var institution in Model)
-                    {
-                        <tr>
-                            @* <td>@institution.InstitutionId</td> *@
-                            <td>@institution.InstitutionName</td>
-                            <td>
-                                @if (!string.IsNullOrEmpty(institution.InstitutionLogoName))
-                                {
-                                    <img src="~/Images/@institution.InstitutionLogoName" alt="Logo" />
-                                }
-                                else
-                                {
-                                    <span>No Image</span>
-                                }
-                            </td>
+                        @* <td>@institution.InstitutionId</td> *@
+                        <td>@institution.InstitutionName</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(institution.InstitutionLogoName))
+                            {
+                                <img src="~/Images/@institution.InstitutionLogoName" alt="Logo" />
+                            }
+                            else
+                            {
+                                <span>No Image</span>
+                            }
+                        </td>
 
-                            <td>@institution.ContactNumber</td>
-                            <td>@institution.Email</td>
-                            <td>@institution.Website</td>
-                            <td>@institution.BrandingTagLine</td>
-                            <td>@institution.Address</td>
-                            <!-- Add other cells as needed -->
+                        <td>@institution.ContactNumber</td>
+                        <td>@institution.Email</td>
+                        <td>@institution.Website</td>
+                        <td>@institution.BrandingTagLine</td>
+                        <td>@institution.Address</td>
+                        <!-- Add other cells as needed -->
                         <td>
                             <!-- Edit Link -->
-                            <a asp-action="InstitutionEdit" asp-route-id="@Model.InstitutionId">Edit</a>
+                            @* <a asp-action="InstitutionEdit" asp-route-id="@Model.InstitutionId">Edit</a> *@
 
                             <!-- Delete Link -->
-                            <a asp-action="Delete" asp-route-id="@Model.InstitutionId">Delete</a>
+                            @* <a asp-action="Delete" asp-route-id="@Model.InstitutionId">Delete</a> *@
                         </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

@@ -1,0 +1,122 @@
+﻿@using LearningManagement.Data.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model LearningManagement.Data.ViewModels.InstitutionViewModel
+
+@{
+    Layout = "_InstitutionAdminLayout";
+    ViewData["Title"] = "Institution Info";
+    ViewBag.ActiveSideNav = SideNavBar.NavIndex.ToString();
+    ViewBag.ActiveSubMenuNav = SubMenuNavBar.InstitutionList.ToString();
+}
+
+<h2>Create Institution</h2>
+
+<form asp-action="CreateInstitutionInfo" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="InstitutionName"></label>
+        <input asp-for="InstitutionName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageFile"></label>
+        <input asp-for="ImageFile" type="file" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InstitutionLogoName"></label>
+        <input asp-for="InstitutionLogoName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ContactNumber"></label>
+        <input asp-for="ContactNumber" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Website"></label>
+        <input asp-for="Website" class="form-control" />
+    </div>
+
+    <!-- Add other input fields for the properties in InstitutionViewModel -->
+    <div class="form-group">
+        <label asp-for="FoundedDate"></label>
+        <input asp-for="FoundedDate" class="form-control" type="date" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Founder"></label>
+        <input asp-for="Founder" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MissionStatement"></label>
+        <textarea asp-for="MissionStatement" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VisionStatement"></label>
+        <textarea asp-for="VisionStatement" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Accreditation"></label>
+        <input asp-for="Accreditation" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Affiliation"></label>
+        <input asp-for="Affiliation" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TotalStudents"></label>
+        <input asp-for="TotalStudents" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TotalTeachers"></label>
+        <input asp-for="TotalTeachers" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TotalCourses"></label>
+        <input asp-for="TotalCourses" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CampusFacilities"></label>
+        <textarea asp-for="CampusFacilities" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SocialMediaLinks"></label>
+        <input asp-for="SocialMediaLinks" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AdmissionProcedure"></label>
+        <textarea asp-for="AdmissionProcedure" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PrincipalName"></label>
+        <input asp-for="PrincipalName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PrincipalEmail"></label>
+        <input asp-for="PrincipalEmail" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PrincipalPhone"></label>
+        <input asp-for="PrincipalPhone" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
