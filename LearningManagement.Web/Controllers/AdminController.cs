@@ -297,7 +297,7 @@ public class AdminController : Controller
         if (addResult != null && addResult.IsSuccess)
         {
             await _notificationHelper.NotifyAsync(message: "Update Successfully");
-            return View(addResult.Value);
+            return RedirectToAction(nameof(InstitutionList));
         }
 
         await _notificationHelper.NotifyAsync(NotificationType.Error, addResult.Errors.First().Message);
