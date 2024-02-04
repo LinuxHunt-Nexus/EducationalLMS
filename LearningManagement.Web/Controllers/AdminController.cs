@@ -245,21 +245,10 @@ public class AdminController : Controller
         var institueList = await _institutionService.InstitutionListAsync();
         return View(institueList.Value);
     }
-    public async Task<IActionResult> InstitutionInfo()
-    {
-
-        //await  _notificationHelper.NotifyAsync();
-
-        var model = new InstitutionViewModel();
-        var institutionInfo = await _institutionService.GetInstitutionInfoAsync();
-
-        if (institutionInfo.IsSuccess) model = institutionInfo.Value;
-        return View(model);
-    }
     [HttpGet]
     public async Task<IActionResult> CreateInstitutionInfo()
     {
-        
+
         return View();
     }
     [HttpPost]
@@ -284,8 +273,49 @@ public class AdminController : Controller
         await _notificationHelper.NotifyAsync(NotificationType.Error, createInstitution.Errors.First().Message);
         return View(model);
     }
+    public async Task<IActionResult> Edit(int id)
+    {
+        var institution = await _institutionService.GetInstitutionInfoByIdAsync(id);
 
+        if (institution == null)
+        {
+            // Handle not found scenario, for example, redirect to Index
+            return View();
+        }
 
+        //var viewModel = _mapper.Map<InstitutionViewModel>(institution);
+        return View(institution.Value);
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(InstitutionViewModel model)
+    {
+        if (!ModelState.IsValid) return View(model);
+
+        var addResult = await _institutionService.UpdateInstitutionInfoAsync(model);
+
+        if (addResult != null && addResult.IsSuccess)
+        {
+            await _notificationHelper.NotifyAsync(message: "Update Successfully");
+            return View(addResult.Value);
+        }
+
+        await _notificationHelper.NotifyAsync(NotificationType.Error, addResult.Errors.First().Message);
+        return View(model);
+    }
+
+    public async Task<IActionResult> InstitutionInfo()
+    {
+
+        //await  _notificationHelper.NotifyAsync();
+
+        var model = new InstitutionViewModel();
+        var institutionInfo = await _institutionService.GetInstitutionInfoAsync();
+
+        if (institutionInfo.IsSuccess) model = institutionInfo.Value;
+        return View(model);
+    }
+    
     // Post
     [HttpPost]
     [ValidateAntiForgeryToken]

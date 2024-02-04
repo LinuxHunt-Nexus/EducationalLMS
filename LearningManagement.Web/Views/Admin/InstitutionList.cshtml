@@ -52,11 +52,8 @@
                         <td>@institution.Address</td>
                         <!-- Add other cells as needed -->
                         <td>
-                            <!-- Edit Link -->
-                            @* <a asp-action="InstitutionEdit" asp-route-id="@Model.InstitutionId">Edit</a> *@
-
-                            <!-- Delete Link -->
-                            @* <a asp-action="Delete" asp-route-id="@Model.InstitutionId">Delete</a> *@
+                            <a asp-action="Edit" asp-route-id="@institution.InstitutionId">Edit</a>
+                            <!-- Add other actions as needed -->
                         </td>
                     </tr>
                 }
