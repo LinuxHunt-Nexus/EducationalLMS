@@ -26,19 +26,19 @@ public class InstitutionService : IInstitutionService
         _institutionRepository = institutionRepository;
     }
 
-    public async Task<Result<Institution>> CreateInstitutionInfoAsync(InstitutionViewModel model)
+
+    public async Task<Result<InstitutionViewModel>> CreateInstitutionInfoAsync(InstitutionViewModel model)
     {
         try
         {
             var createInstitution = await _institutionRepository.CreateInstitutionInfoAsync(model);
-            return createInstitution;
+            return new Result<InstitutionViewModel>();
         }
         catch (Exception ex)
         {
 
             throw ex;
         }
-
     }
 
     public async Task<Result<InstitutionViewModel>> GetInstitutionInfoAsync()

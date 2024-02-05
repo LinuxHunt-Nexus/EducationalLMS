@@ -5,6 +5,7 @@ public enum SubMenuNavBar
     AdminIndex,
     InstitutionInfo,
     InstitutionList,
+    CreateInstitutionInfo,
     AcademicYear,
     AddClass,
 
