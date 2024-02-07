@@ -12,4 +12,6 @@ public interface IInstitutionService
     Task<Result<InstitutionViewModel>> UpdateInstitutionInfoAsync(InstitutionViewModel model);
     Task<Result<InstitutionViewModel>> CreateInstitutionInfoAsync(InstitutionViewModel model);
     Task<Result<InstitutionViewModel>> UpdateInstitutionInfoByAdminAsync(InstitutionViewModel model);
+    Task<Result<InstitutionViewModel>> EditInstitutionInfoAsync(int institutionId, InstitutionViewModel model);
+    Task<Result<InstitutionViewModel>> DeleteInstitutionInfoAsync(int institutionId);
 }

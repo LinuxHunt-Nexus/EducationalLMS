@@ -288,11 +288,11 @@ public class AdminController : Controller
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(InstitutionViewModel model)
+    public async Task<IActionResult> Edit(int id, InstitutionViewModel model)
     {
         if (!ModelState.IsValid) return View(model);
 
-        var addResult = await _institutionService.UpdateInstitutionInfoAsync(model);
+        var addResult = await _institutionService.EditInstitutionInfoAsync(id,model);
 
         if (addResult != null && addResult.IsSuccess)
         {
@@ -303,6 +303,34 @@ public class AdminController : Controller
         await _notificationHelper.NotifyAsync(NotificationType.Error, addResult.Errors.First().Message);
         return View(model);
     }
+    public async Task<IActionResult> Delete(int id)
+    {
+        var institution = await _institutionService.GetInstitutionInfoByIdAsync(id);
+
+        if (institution == null)
+        {
+            // Handle not found scenario, for example, redirect to Index
+            return RedirectToAction("Index");
+        }
+
+        return View(institution.Value);
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var result = await _institutionService.DeleteInstitutionInfoAsync(id);
+
+        if (!result.IsSuccess)
+        {
+            // If deletion fails, handle the error, for example, display an error message
+            await _notificationHelper.NotifyAsync(NotificationType.Error, result.Errors.First().Message);
+            return View(); // Redirect to the delete view again to show the error message
+        }
+
+        return RedirectToAction("InstitutionList"); // Redirect to the index page after successful deletion
+    }
+
 
     public async Task<IActionResult> InstitutionInfo()
     {

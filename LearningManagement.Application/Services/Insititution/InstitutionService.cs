@@ -41,6 +41,63 @@ public class InstitutionService : IInstitutionService
         }
     }
 
+    public async Task<Result<InstitutionViewModel>> DeleteInstitutionInfoAsync(int institutionId)
+    {
+        try
+        {
+            // Fetch institution details from the repository
+            var existingInstitution = await _institutionRepository.DeleteInstitutionInfoAsync(institutionId);
+
+            // Check if the institution exists
+            if (existingInstitution == null)
+            {
+                return Result.Fail("Institution not found.");
+            }
+
+            // Delete the institution
+            var deleted = await _institutionRepository.DeleteInstitutionInfoAsync(institutionId);
+
+            if (!deleted.IsFailed)
+            {
+                return Result.Fail("Failed to delete institution.");
+            }
+
+            // Return the deleted institution's view model
+            return new Result<InstitutionViewModel>();
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception appropriately
+            return Result.Fail("An error occurred while deleting the institution.");
+        }
+    }
+
+    public async Task<Result<InstitutionViewModel>> EditInstitutionInfoAsync(int institutionId, InstitutionViewModel model)
+    {
+        try
+        {
+            //var appUser = _httpContextAccessor.HttpContext.User.Identity?.Name;
+
+            //if (string.IsNullOrEmpty(appUser)) return Result.Fail($"User not found");
+
+            //var institutionId = await _applicationUserRepository.GetInstitutionByUserNameAsync
+
+            //if (institutionId == null) return Result.Fail($"User not found");
+
+            if (model.ImageFile != null && model.ImageFile.Length > 0)
+            {
+                var imageFileName = await _fileStorageHelper.SaveImageAsync(model.ImageFile);
+                model.InstitutionLogoName = imageFileName;
+            }
+
+            return await _institutionRepository.EditInstitutionInfoAsync(institutionId, model);
+        }
+        catch (Exception e)
+        {
+            return Result.Fail(e.InnerException?.Message ?? e.Message);
+        }
+    }
+
     public async Task<Result<InstitutionViewModel>> GetInstitutionInfoAsync()
     {
         try

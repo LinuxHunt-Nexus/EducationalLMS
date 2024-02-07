@@ -10,4 +10,6 @@ public interface IInstitutionRepository :IBaseRepository<Institution>
     Task<Result<List<InstitutionViewModel>>> InstitutionListAsync();
     Task<Result<InstitutionViewModel>> UpdateInstitutionInfoAsync(int institutionId, InstitutionViewModel model);
     Task<Result<Institution>> CreateInstitutionInfoAsync(InstitutionViewModel model);
+    Task<Result<InstitutionViewModel>> EditInstitutionInfoAsync(int institutionId, InstitutionViewModel model);
+    Task<Result<InstitutionViewModel>> DeleteInstitutionInfoAsync(int institutionId);
 }
